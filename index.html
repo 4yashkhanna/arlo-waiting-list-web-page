@@ -307,6 +307,19 @@
     .platform-yt  { background: #FF0000; }
     .platform-ig  { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
     .platform-web { background: var(--accent); }
+    .platform-tt      { background: #111; }
+    .platform-art     { background: var(--accent); }
+    .platform-shot    { background: var(--sage); }
+    .platform-claude  { background: #D97757; }
+    .platform-chatgpt { background: #10A37F; }
+
+    .source-pill .platform-icon,
+    .connector-pill .platform-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      font-size: 9px;
+    }
 
     .phone-card-title {
       font-family: 'Lora', serif;
@@ -485,6 +498,21 @@
       gap: 12px;
       justify-content: center;
     }
+
+    /* phone shown inside the Save-anything card */
+    .feature-wide-phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .feature-wide-phone .phone-wrap {
+      max-width: 300px;
+      margin: 0;
+      padding-bottom: 0;
+    }
+    .feature-wide-phone .float-card.notif  { left: -28px; top: 14%; }
+    .feature-wide-phone .float-card.ai-chip { right: -28px; top: 60%; }
 
     /* two small cards */
     .feature-grid {
@@ -1139,95 +1167,75 @@
     <p>Join the <strong>early readers</strong> — first access before launch</p>
   </div>
 
-  <!-- Phone mockup -->
-  <div class="phone-wrap">
-
-    <div class="float-card notif">
-      <div class="float-icon">🔔</div>
-      <div>
-        <strong>Remember this?</strong>
-        <span>Claude connectors — 3 weeks ago</span>
-      </div>
-    </div>
-
-    <div class="float-card ai-chip">
-      <div class="float-icon">✦</div>
-      <div>
-        <strong>Reading it for you…</strong>
-        <span>Extracting key insights</span>
-      </div>
-    </div>
-
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <div class="phone-notch"></div>
-        <div class="phone-ui">
-          <div class="phone-header">arlo</div>
-
-          <div class="phone-card">
-            <div class="phone-card-platform">
-              <div class="platform-icon platform-yt">▶</div>
-              <span style="font-size:11px;color:var(--ink-3)">YouTube · 2h ago</span>
-            </div>
-            <div class="phone-card-title">How Claude MCP connectors actually work</div>
-            <div class="phone-card-summary">Covers the 5 native connectors, custom OAuth setup, and the streamable HTTP spec vs stdio.</div>
-            <span class="phone-tag">#claude</span>
-            <span class="phone-tag">#mcp</span>
-          </div>
-
-          <div class="phone-card">
-            <div class="phone-card-platform">
-              <div class="platform-icon platform-ig">◈</div>
-              <span style="font-size:11px;color:var(--ink-3)">Instagram · Yesterday</span>
-            </div>
-            <div class="phone-card-title">Photoshop automation with scripts</div>
-            <div class="phone-card-summary">Batch export layers using JSX + Action Manager. Names the exact API calls for layer iteration.</div>
-            <span class="phone-tag">#photoshop</span>
-            <span class="phone-tag">#automation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-  <div class="features-header">
-    <h2>Everything you save,<br>finally useful</h2>
-    <p>arlo reads, organizes, and resurfaces what you collect — so good ideas don't get buried.</p>
-  </div>
 
-  <!-- Wide card -->
+  <!-- Wide card: Save anything -->
   <div class="feature-wide">
     <div>
       <div class="feature-label">Save anything</div>
-      <h3>Capture life.<br>arlo remembers.</h3>
+      <h3>Everything you save,<br>finally useful</h3>
       <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. arlo's AI reads the whole thing — pulling out the specific names, steps, tools, and takeaways — and files it automatically.</p>
       <div class="source-icons">
-        <div class="source-pill">▶ YouTube</div>
-        <div class="source-pill">◈ Instagram</div>
-        <div class="source-pill">♪ TikTok</div>
-        <div class="source-pill">◉ Articles</div>
-        <div class="source-pill">⊞ Screenshots</div>
+        <div class="source-pill"><span class="platform-icon platform-yt">▶</span> YouTube</div>
+        <div class="source-pill"><span class="platform-icon platform-ig">◈</span> Instagram</div>
+        <div class="source-pill"><span class="platform-icon platform-tt">♪</span> TikTok</div>
+        <div class="source-pill"><span class="platform-icon platform-art">◉</span> Articles</div>
+        <div class="source-pill"><span class="platform-icon platform-shot">⊞</span> Screenshots</div>
       </div>
     </div>
-    <div class="feature-wide-visual">
-      <div class="phone-card" style="margin:0">
-        <div class="phone-card-platform">
-          <div class="platform-icon platform-yt">▶</div>
-          <span style="font-size:11px;color:var(--ink-3)">YouTube · Just saved</span>
-          <span style="margin-left:auto;font-size:11px;color:var(--sage);font-weight:600">Reading…</span>
+
+    <!-- Phone: arlo reading a save in real time -->
+    <div class="feature-wide-phone">
+      <div class="phone-wrap">
+        <div class="float-card notif">
+          <div class="float-icon">🔔</div>
+          <div>
+            <strong>Remember this?</strong>
+            <span>Claude connectors — 3 weeks ago</span>
+          </div>
         </div>
-        <div class="phone-card-title">The Feynman Technique for anything</div>
-        <div class="phone-card-summary">Specific steps: pick a concept, explain it simply, identify gaps, simplify further with an analogy.</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--accent-soft);border-radius:8px;font-size:12px;color:var(--accent);font-weight:500">
-        <span>✦</span> Extracting key points &amp; tags…
-      </div>
-      <div class="phone-card" style="margin:0;opacity:0.6">
-        <div class="phone-card-title" style="font-size:12px">Atomic Habits summary — James Clear</div>
-        <span class="phone-tag">#habits</span><span class="phone-tag">#productivity</span>
+        <div class="float-card ai-chip">
+          <div class="float-icon">✦</div>
+          <div>
+            <strong>Reading it for you…</strong>
+            <span>Extracting key insights</span>
+          </div>
+        </div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-ui">
+              <div class="phone-header">arlo</div>
+
+              <div class="phone-card">
+                <div class="phone-card-platform">
+                  <div class="platform-icon platform-yt">▶</div>
+                  <span style="font-size:11px;color:var(--ink-3)">YouTube · Just saved</span>
+                  <span style="margin-left:auto;font-size:11px;color:var(--sage);font-weight:600">Reading…</span>
+                </div>
+                <div class="phone-card-title">The Feynman Technique for anything</div>
+                <div class="phone-card-summary">Specific steps: pick a concept, explain it simply, identify gaps, simplify further with an analogy.</div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--accent-soft);border-radius:8px;font-size:12px;color:var(--accent);font-weight:500;margin-bottom:10px">
+                <span>✦</span> Extracting key points &amp; tags…
+              </div>
+
+              <div class="phone-card">
+                <div class="phone-card-platform">
+                  <div class="platform-icon platform-art">◉</div>
+                  <span style="font-size:11px;color:var(--ink-3)">Article · Saved</span>
+                </div>
+                <div class="phone-card-title">Atomic Habits summary — James Clear</div>
+                <span class="phone-tag">#habits</span>
+                <span class="phone-tag">#productivity</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1248,8 +1256,8 @@
           Photoshop automation — saved 3 days ago
         </div>
         <div class="connector-pills">
-          <div class="connector-pill">✦ Claude</div>
-          <div class="connector-pill">⊞ ChatGPT</div>
+          <div class="connector-pill"><span class="platform-icon platform-claude">✦</span> Claude</div>
+          <div class="connector-pill"><span class="platform-icon platform-chatgpt">⊞</span> ChatGPT</div>
         </div>
       </div>
     </div>
