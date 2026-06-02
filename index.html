@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arlo — Your second brain for everything that matters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px 64px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse 65% 55% at 5% 5%,  rgba(238, 162, 115, 0.70) 0%, transparent 65%),
+                radial-gradient(ellipse 65% 55% at 95% 5%, rgba(170, 205, 170, 0.70) 0%, transparent 65%),
+                #f5f0ea;
+        }
+
+        .logo-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .logo-box {
+            width: 68px;
+            height: 68px;
+            background: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 18px rgba(0,0,0,0.13);
+        }
+
+        .logo-name {
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #1a1a1a;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.13em;
+            color: #C94B27;
+            text-transform: uppercase;
+            margin-bottom: 26px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-size: clamp(38px, 5.5vw, 58px);
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1a1a1a;
+            max-width: 640px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 em {
+            color: #C94B27;
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 16px;
+            color: #666;
+            max-width: 440px;
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .email-form {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 460px;
+            background: white;
+            border-radius: 100px;
+            padding: 5px 5px 5px 22px;
+            box-shadow: 0 4px 26px rgba(0,0,0,0.13);
+            margin-bottom: 20px;
+        }
+
+        .email-form input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background: transparent;
+            font-family: inherit;
+            color: #1a1a1a;
+            min-width: 0;
+        }
+
+        .email-form input::placeholder { color: #bbb; }
+
+        .email-form button {
+            background: #C94B27;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            padding: 13px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .email-form button:hover { background: #b33d1e; }
+
+        .social-proof {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .avatar-stack { display: flex; }
+
+        .av {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .av:first-child { margin-left: 0; }
+
+        /* ── FEATURE SECTION ── */
+        .feature-section {
+            background: #f5f4f0;
+            padding: 64px 24px 48px;
+        }
+
+        .feature-card-wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 28px;
+            padding: 52px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            box-shadow: 0 2px 28px rgba(0,0,0,0.06);
+        }
+
+        .feature-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #C94B27;
+            margin-bottom: 14px;
+        }
+
+        .feature-card h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .source-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .si {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: #f2f1ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .anywhere {
+            font-size: 13px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        /* Phone */
+        .phone-col {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .phone-shell {
+            width: 196px;
+            height: 416px;
+            background: #111;
+            border-radius: 34px;
+            padding: 11px;
+            box-shadow: 0 18px 60px rgba(0,0,0,0.36), 0 4px 14px rgba(0,0,0,0.14);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+            border-radius: 26px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p-notch {
+            position: absolute;
+            top: 11px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 68px;
+            height: 20px;
+            background: #111;
+            border-radius: 0 0 14px 14px;
+            z-index: 2;
+        }
+
+        .p-statusbar {
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+            background: #f5f5f5;
+            flex-shrink: 0;
+        }
+
+        .p-time { font-size: 8px; font-weight: 700; color: #1a1a1a; }
+
+        .p-icons {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .p-body {
+            flex: 1;
+            padding: 4px 10px 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .p-greeting { font-size: 9px; font-weight: 800; color: #1a1a1a; }
+        .p-greeting-sub { font-size: 6.5px; color: #888; margin-bottom: 7px; }
+
+        .p-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .p-tabs {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 9px;
+            overflow: hidden;
+        }
+
+        .p-tab {
+            background: #e5e5e5;
+            border-radius: 20px;
+            padding: 2px 6px;
+            font-size: 6px;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .p-tab.active { background: #1a1a1a; color: white; }
+
+        .p-section { font-size: 7.5px; font-weight: 700; color: #1a1a1a; margin-bottom: 5px; }
+
+        .p-pinned {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            margin-bottom: 9px;
+        }
+
+        .p-pin-card {
+            border-radius: 7px;
+            height: 54px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .p-pin-label {
+            position: absolute;
+            bottom: 3px;
+            left: 3px;
+            right: 3px;
+            font-size: 4.5px;
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.35;
+        }
+
+        .p-pin-meta { font-weight: 400; color: #666; }
+
+        .p-recent-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 0;
+            border-bottom: 1px solid #ececec;
+        }
+
+        .p-item-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .p-item-title { font-size: 6.5px; font-weight: 600; color: #1a1a1a; line-height: 1.35; }
+        .p-item-meta  { font-size: 5.5px; color: #aaa; }
+
+        .p-fab {
+            position: absolute;
+            bottom: 14px;
+            right: 12px;
+            width: 22px;
+            height: 22px;
+            background: #C94B27;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        /* Floating cards */
+        .fcards {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 18px;
+        }
+
+        .fcard {
+            background: white;
+            border-radius: 13px;
+            padding: 11px 13px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+            min-width: 162px;
+        }
+
+        .fcard-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+        }
+
+        .fcard-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .fcard-type  { font-size: 9px; color: #aaa; margin-bottom: 2px; }
+        .fcard-title { font-size: 11px; font-weight: 600; color: #1a1a1a; line-height: 1.25; }
+        .fcard-url   { font-size: 9px; color: #ccc; margin-top: 2px; }
+
+        .saved-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 9px;
+            padding-top: 8px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .saved-lbl {
+            font-size: 10px;
+            font-weight: 500;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .saved-check {
+            width: 18px;
+            height: 18px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Three feature items */
+        .feat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .feat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: white;
+            border-radius: 16px;
+            padding: 18px 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .feat-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #f5f4f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feat-item h3 { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: #1a1a1a; }
+        .feat-item p  { font-size: 12px; color: #999; line-height: 1.5; }
+
+        /* ── SURVEY SECTION ── */
+        .survey-section {
+            background: white;
+            padding: 72px 24px;
+        }
+
+        .survey-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        .survey-left h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            color: #1a1a1a;
+        }
+
+        .survey-blurb {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.65;
+            margin-bottom: 32px;
+        }
+
+        .s-steps { display: flex; flex-direction: column; gap: 14px; }
+
+        .s-step {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .s-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .s-num.active   { background: #C94B27; color: white; }
+        .s-num.inactive { background: #eee; color: #bbb; }
+
+        .s-label          { font-size: 13px; font-weight: 500; color: #1a1a1a; }
+        .s-label.inactive { color: #bbb; }
+
+        .s-privacy {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 11.5px;
+            color: #bbb;
+            line-height: 1.5;
+        }
+
+        /* Survey card */
+        .survey-card {
+            background: white;
+            border: 1px solid #ebebeb;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 26px rgba(0,0,0,0.07);
+            position: relative;
+        }
+
+        .survey-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #1a1a1a; }
+        .select-all { font-size: 12px; color: #aaa; margin-bottom: 18px; }
+
+        .q-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 0;
+            cursor: pointer;
+            border-bottom: 1px solid #f5f5f5;
+            transition: opacity 0.15s;
+        }
+
+        .q-option:last-of-type { border-bottom: none; }
+        .q-option:hover { opacity: 0.7; }
+
+        .q-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+
+        .q-icon {
+            width: 30px;
+            height: 30px;
+            background: #f7f7f5;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+        .q-check {
+            width: 19px;
+            height: 19px;
+            border: 1.5px solid #ddd;
+            border-radius: 5px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+
+        .q-check.checked {
+            background: #C94B27;
+            border-color: #C94B27;
+        }
+
+        .next-btn {
+            width: 100%;
+            background: #faeee8;
+            color: #C94B27;
+            border: none;
+            border-radius: 100px;
+            padding: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 18px;
+            transition: background 0.2s;
+        }
+
+        .next-btn:hover { background: #f5e1d6; }
+
+        .emoji-deco {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            font-size: 28px;
+        }
+
+        /* ── FOOTER VALUES ── */
+        .footer-vals {
+            border-top: 1px solid #f0f0f0;
+            padding: 36px 24px;
+            background: white;
+        }
+
+        .fv-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .fv-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .fv-icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #faeee8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .fv-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: #1a1a1a; }
+        .fv-text  { font-size: 12px; color: #999; line-height: 1.45; }
+
+        /* ── SITE FOOTER ── */
+        .site-footer {
+            border-top: 1px solid #f0f0f0;
+            padding: 20px 24px;
+            text-align: center;
+            background: white;
+        }
+
+        .site-footer p { font-size: 12.5px; color: #bbb; }
+
+        .site-footer a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .site-footer a:hover { color: #555; }
+
+        /* Responsive */
+        @media (max-width: 820px) {
+            .feature-card { grid-template-columns: 1fr; }
+            .phone-col { justify-content: center; }
+            .feat-row { grid-template-columns: 1fr; }
+            .survey-inner { grid-template-columns: 1fr; }
+            .fv-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+    <div class="logo-wrap">
+        <div class="logo-box">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 5 L24.8 16 L37 17 L28 25 L30.8 37 L21 31 L11.2 37 L14 25 L5 17 L17.2 16 Z"
+                      fill="#C94B27" stroke="#C94B27" stroke-width="0.5" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <span class="logo-name">arlo</span>
+    </div>
+
+    <div class="hero-badge">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1 L7.1 4.5 L11 4 L8.2 6.6 L9.5 11 L6 8.8 L2.5 11 L3.8 6.6 L1 4 L4.9 4.5 Z" fill="#C94B27"/>
+        </svg>
+        AI Memory that works for you
+    </div>
+
+    <h1>Your second brain<br>for <em>everything</em> that matters</h1>
+
+    <p class="hero-sub">Arlo captures, organizes, and connects the things you save—<br>so you can remember, find, and act on what matters.</p>
+
+    <div class="coming-soon-badge">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1 L7.1 4.5 L11 4 L8.2 6.6 L9.5 11 L6 8.8 L2.5 11 L3.8 6.6 L1 4 L4.9 4.5 Z" fill="#bbb"/>
+        </svg>
+        Coming soon
+    </div>
+
+    <form class="email-form" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Join the waitlist &nbsp;→</button>
+    </form>
+
+    <div class="social-proof">
+        <div class="avatar-stack">
+            <div class="av" style="background:#c97a52;">A</div>
+            <div class="av" style="background:#7a8eb5;">B</div>
+            <div class="av" style="background:#6dab8e;">C</div>
+        </div>
+        Join 1,248+ people building their second brain with Arlo ❤
+    </div>
+</section>
+
+<!-- ══════════════ FEATURE SECTION ══════════════ -->
+<section class="feature-section">
+    <div class="feature-card-wrap">
+        <div class="feature-card">
+
+            <!-- Left: copy -->
+            <div>
+                <div class="feature-tag">Save Anything</div>
+                <h2>Capture life.<br>Arlo remembers.</h2>
+                <p class="feature-desc">Save notes, links, images, videos, emails, documents, and more.
+                    Arlo instantly organizes and connects everything so it's always there when you need it.</p>
+
+                <div class="source-icons">
+                    <!-- Gmail -->
+                    <div class="si">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#EA4335"/>
+                        </svg>
+                    </div>
+                    <!-- Link -->
+                    <div class="si">
+                        <svg width="17" height="17" viewBox="0 0 24 24">
+                            <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#666"/>
+                        </svg>
+                    </div>
+                    <!-- Google Docs -->
+                    <div class="si">
+                        <svg width="17" height="17" viewBox="0 0 24 24">
+                            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 9H7v-2h6v2zm4 4H7v-2h10v2zM13 9V3.5L18.5 9H13z" fill="#4285F4"/>
+                        </svg>
+                    </div>
+                    <!-- YouTube -->
+                    <div class="si">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" fill="#FF0000"/>
+                        </svg>
+                    </div>
+                    <!-- X -->
+                    <div class="si">
+                        <svg width="15" height="15" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.912-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#1a1a1a"/>
+                        </svg>
+                    </div>
+                    <!-- Plus -->
+                    <div class="si" style="font-size:20px; color:#aaa; font-weight:300; line-height:1; padding-top:1px;">+</div>
+                </div>
+
+                <p class="anywhere">From anywhere. Instantly.</p>
+            </div>
+
+            <!-- Right: Phone + Floating cards -->
+            <div class="phone-col">
+                <!-- Phone shell -->
+                <div class="phone-shell">
+                    <div class="p-notch"></div>
+                    <div class="phone-screen">
+                        <!-- Status bar -->
+                        <div class="p-statusbar">
+                            <span class="p-time">9:41</span>
+                            <div class="p-icons">
+                                <svg width="10" height="8" viewBox="0 0 14 10" fill="#1a1a1a">
+                                    <rect x="0" y="4" width="2.5" height="6" rx="0.5"/>
+                                    <rect x="3.5" y="2.5" width="2.5" height="7.5" rx="0.5"/>
+                                    <rect x="7" y="1" width="2.5" height="9" rx="0.5"/>
+                                    <rect x="10.5" y="0" width="2.5" height="10" rx="0.5"/>
+                                </svg>
+                                <svg width="11" height="8" viewBox="0 0 18 12" fill="none">
+                                    <path d="M9 2.5C11.5 2.5 13.7 3.7 15.1 5.5L16.5 4C14.7 1.8 12 0.5 9 0.5C6 0.5 3.3 1.8 1.5 4L2.9 5.5C4.3 3.7 6.5 2.5 9 2.5Z" fill="#1a1a1a"/>
+                                    <path d="M9 5.5C10.5 5.5 11.8 6.2 12.7 7.3L14.1 5.8C12.8 4.4 11 3.5 9 3.5C7 3.5 5.2 4.4 3.9 5.8L5.3 7.3C6.2 6.2 7.5 5.5 9 5.5Z" fill="#1a1a1a"/>
+                                    <circle cx="9" cy="10" r="1.5" fill="#1a1a1a"/>
+                                </svg>
+                                <svg width="18" height="8" viewBox="0 0 22 10" fill="none">
+                                    <rect x="0.5" y="0.5" width="18" height="9" rx="2.5" stroke="#1a1a1a" stroke-opacity="0.35"/>
+                                    <rect x="19.5" y="3" width="2" height="4" rx="1" fill="#1a1a1a" fill-opacity="0.4"/>
+                                    <rect x="1.5" y="1.5" width="14" height="7" rx="1.5" fill="#1a1a1a"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- App body -->
+                        <div class="p-body">
+                            <div class="p-header-row">
+                                <div>
+                                    <div class="p-greeting">Good morning, Alex</div>
+                                    <div class="p-greeting-sub">Here's what you've saved recently</div>
+                                </div>
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="11" cy="11" r="7.5" stroke="#444" stroke-width="2.3"/>
+                                    <path d="M21 21l-3.8-3.8" stroke="#444" stroke-width="2.3" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="p-tabs">
+                                <div class="p-tab active">All 34</div>
+                                <div class="p-tab">Notes 8</div>
+                                <div class="p-tab">Articles 6</div>
+                                <div class="p-tab">Images 6</div>
+                                <div class="p-tab">Videos 3</div>
+                            </div>
+                            <div class="p-section">Pinned</div>
+                            <div class="p-pinned">
+                                <div class="p-pin-card" style="background:linear-gradient(145deg,#7ecde5,#4daac8);">
+                                    <div class="p-pin-label">Weekend in Tulum<br><span class="p-pin-meta">Notes · 24 ago</span></div>
+                                </div>
+                                <div class="p-pin-card" style="background:linear-gradient(145deg,#e8e0d5,#d4c8b4);">
+                                    <div class="p-pin-label">Brand inspiration<br><span class="p-pin-meta">16 Items</span></div>
+                                </div>
+                                <div class="p-pin-card" style="background:linear-gradient(145deg,#dce5f0,#c5d2e5);">
+                                    <div class="p-pin-label">The Science of Focus<br><span class="p-pin-meta">Article · 30 ago</span></div>
+                                </div>
+                            </div>
+                            <div class="p-section">Recent</div>
+                            <div class="p-recent-item">
+                                <div class="p-item-thumb" style="background:#dce5f5;"></div>
+                                <div style="flex:1;min-width:0;">
+                                    <div class="p-item-title">Design inspiration for new landing page</div>
+                                    <div class="p-item-meta">Images · 1h ago</div>
+                                </div>
+                                <svg width="6" height="10" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                            <div class="p-recent-item" style="border-bottom:none;">
+                                <div class="p-item-thumb" style="background:#fde8e8;"></div>
+                                <div>
+                                    <div class="p-item-title">Q2 Strategy Deck</div>
+                                    <div class="p-item-meta">PDF · 4.3 MB</div>
+                                </div>
+                            </div>
+                            <div class="p-fab">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5v14M5 12h14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating cards -->
+                <div class="fcards">
+                    <!-- YouTube -->
+                    <div class="fcard">
+                        <div class="fcard-row">
+                            <div class="fcard-icon" style="background:#FF0000;">
+                                <svg width="14" height="10" viewBox="0 0 20 14" fill="none">
+                                    <path d="M8 3.5v7l6.5-3.5L8 3.5z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="fcard-type">YouTube video</div>
+                                <div class="fcard-title">How to build a habit</div>
+                                <div class="fcard-url">youtube.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Article / Medium -->
+                    <div class="fcard">
+                        <div class="fcard-row">
+                            <div class="fcard-icon" style="background:#000; color:white; font-size:13px; font-weight:700; font-family:Georgia,serif; letter-spacing:-0.5px;">M</div>
+                            <div>
+                                <div class="fcard-type">Article</div>
+                                <div class="fcard-title">The Science of Focus</div>
+                                <div class="fcard-url">medium.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PDF with Saved badge -->
+                    <div class="fcard">
+                        <div class="fcard-row">
+                            <div class="fcard-icon" style="background:#f87272;">
+                                <svg width="13" height="14" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 9H9v-2h6v2zm2 4H9v-2h8v2zM13 9V3.5L18.5 9H13z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="fcard-type">PDF</div>
+                                <div class="fcard-title">Q2 Strategy Deck</div>
+                                <div class="fcard-url">pdf · 4.2 MB</div>
+                            </div>
+                        </div>
+                        <div class="saved-row">
+                            <span class="saved-lbl">
+                                <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                                    <path d="M6 1 L7.1 4.5 L11 4 L8.2 6.6 L9.5 11 L6 8.8 L2.5 11 L3.8 6.6 L1 4 L4.9 4.5 Z" fill="#C94B27"/>
+                                </svg>
+                                Saved to Arlo
+                            </span>
+                            <div class="saved-check">
+                                <svg width="10" height="8" viewBox="0 0 14 11" fill="none">
+                                    <path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Three feature pills below the card -->
+        <div class="feat-row">
+            <div class="feat-item">
+                <div class="feat-icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="#555" stroke-width="1.5"/>
+                        <path d="M9 9a3 3 0 0 1 6 0c0 2-3 3-3 3" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="12" cy="16" r="0.8" fill="#555"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>AI that understands you</h3>
+                    <p>Arlo connects ideas, extracts insights, and helps you find what you need—fast.</p>
+                </div>
+            </div>
+            <div class="feat-item">
+                <div class="feat-icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
+                        <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
+                        <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
+                        <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Everything in one place</h3>
+                    <p>No more tabs, screenshots, or scattered notes. Your digital world, organized.</p>
+                </div>
+            </div>
+            <div class="feat-item">
+                <div class="feat-icon-box">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2.5 L13.7 8.5 L20 8 L15 12 L17 18.5 L12 15 L7 18.5 L9 12 L4 8 L10.3 8.5 Z"
+                              stroke="#555" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Take action, effortlessly</h3>
+                    <p>Turn saved ideas into tasks, projects, and progress with Arlo by your side.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ SURVEY SECTION ══════════════ -->
+<section class="survey-section">
+    <div class="survey-inner">
+        <!-- Left -->
+        <div class="survey-left">
+            <h2>Help us build Arlo for you</h2>
+            <p class="survey-blurb">Your input helps us create a second brain that fits your life perfectly.
+                It only takes 30 seconds.</p>
+
+            <div class="s-steps">
+                <div class="s-step">
+                    <div class="s-num active">1</div>
+                    <span class="s-label">What best describes you?</span>
+                </div>
+                <div class="s-step">
+                    <div class="s-num inactive">2</div>
+                    <span class="s-label inactive">What do you struggle with most?</span>
+                </div>
+                <div class="s-step">
+                    <div class="s-num inactive">3</div>
+                    <span class="s-label inactive">What would you love Arlo to help you do?</span>
+                </div>
+                <div class="s-step">
+                    <div class="s-num inactive">4</div>
+                    <span class="s-label inactive">Almost there!</span>
+                </div>
+            </div>
+
+            <div class="s-privacy">
+                <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px;">
+                    <path d="M12 2L4 5v6.5c0 5.25 3.4 10.15 8 11.5 4.6-1.35 8-6.25 8-11.5V5l-8-3z" fill="#ddd"/>
+                </svg>
+                <span>Your responses are private and help shape a better Arlo.</span>
+            </div>
+        </div>
+
+        <!-- Right: Survey card -->
+        <div class="survey-card">
+            <span class="emoji-deco">🌍</span>
+            <h3>What best describes you?</h3>
+            <div class="select-all">Select all that apply.</div>
+
+            <div class="q-option" onclick="toggleCheck(this)">
+                <div class="q-label"><div class="q-icon">🎓</div> Student</div>
+                <div class="q-check"></div>
+            </div>
+            <div class="q-option" onclick="toggleCheck(this)">
+                <div class="q-label"><div class="q-icon">💼</div> Professional</div>
+                <div class="q-check"></div>
+            </div>
+            <div class="q-option" onclick="toggleCheck(this)">
+                <div class="q-label"><div class="q-icon">✏️</div> Creator / Writer</div>
+                <div class="q-check"></div>
+            </div>
+            <div class="q-option" onclick="toggleCheck(this)">
+                <div class="q-label"><div class="q-icon">🚀</div> Entrepreneur / Founder</div>
+                <div class="q-check"></div>
+            </div>
+            <div class="q-option" onclick="toggleCheck(this)">
+                <div class="q-label"><div class="q-icon">💭</div> Other</div>
+                <div class="q-check"></div>
+            </div>
+
+            <button class="next-btn">Next &nbsp;→</button>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ FOOTER VALUES ══════════════ -->
+<div class="footer-vals">
+    <div class="fv-inner">
+        <div class="fv-item">
+            <div class="fv-icon-box">🔒</div>
+            <div>
+                <div class="fv-title">Private by default</div>
+                <div class="fv-text">Your data is encrypted and always in your control.</div>
+            </div>
+        </div>
+        <div class="fv-item">
+            <div class="fv-icon-box">⚡</div>
+            <div>
+                <div class="fv-title">Built with care</div>
+                <div class="fv-text">Thoughtfully designed to help you think, create, and grow.</div>
+            </div>
+        </div>
+        <div class="fv-item">
+            <div class="fv-icon-box">❤️</div>
+            <div>
+                <div class="fv-title">By people who get it</div>
+                <div class="fv-text">Made for curious minds, creators, and doers like you.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════ SITE FOOTER ══════════════ -->
+<footer class="site-footer">
+    <p>© 2024 Arlo. All rights reserved. &nbsp;&nbsp;
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
+    </p>
+</footer>
+
+<script>
+    function toggleCheck(option) {
+        const check = option.querySelector('.q-check');
+        if (check.classList.contains('checked')) {
+            check.classList.remove('checked');
+            check.innerHTML = '';
+        } else {
+            check.classList.add('checked');
+            check.innerHTML = '<svg width="11" height="9" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        }
+    }
+</script>
+
+</body>
+</html>
