@@ -819,6 +819,211 @@
     }
     .cta-band-form button:hover { opacity: 0.9; }
 
+    /* ── SURVEY (Help us build arlo) ─────────────────── */
+    .survey {
+      max-width: 1060px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .survey-inner {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      box-shadow: 0 2px 24px #00000008;
+    }
+
+    .survey-intro .feature-label { margin-bottom: 14px; }
+
+    .survey-intro h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .survey-intro > p {
+      font-size: 16px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+
+    .survey-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .survey-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--ink-3);
+      transition: color 0.2s;
+    }
+    .survey-step.active,
+    .survey-step.done { color: var(--ink); font-weight: 500; }
+
+    .survey-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--ink-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .survey-step.active .survey-step-num,
+    .survey-step.done .survey-step-num {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF8F5;
+    }
+
+    .survey-privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.5;
+      max-width: 380px;
+    }
+    .survey-privacy svg { flex-shrink: 0; margin-top: 1px; color: var(--ink-3); }
+
+    /* card */
+    .survey-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .survey-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .survey-card-head h3 {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .survey-card-head p { font-size: 13px; color: var(--ink-3); }
+    .survey-emoji { font-size: 26px; line-height: 1; flex-shrink: 0; }
+
+    .survey-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .survey-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .survey-option:hover { border-color: var(--accent-lt); }
+    .survey-option.selected { border-color: var(--accent); background: var(--accent-soft); }
+
+    .survey-option-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .survey-option-emoji {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .survey-option.selected .survey-option-emoji { background: #fff; }
+
+    .survey-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .survey-option.selected .survey-check { background: var(--accent); border-color: var(--accent); }
+    .survey-check svg { opacity: 0; transition: opacity 0.15s; }
+    .survey-option.selected .survey-check svg { opacity: 1; }
+
+    .survey-next {
+      margin-top: 18px;
+      width: 100%;
+      background: var(--accent);
+      color: #FFF8F5;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.18s, transform 0.12s;
+    }
+    .survey-next:hover { background: #7a3818; transform: translateY(-1px); }
+    .survey-next svg { width: 15px; height: 15px; }
+
+    .survey-done { text-align: center; padding: 28px 0; }
+    .survey-done-emoji { font-size: 44px; margin-bottom: 12px; }
+    .survey-done h3 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .survey-done p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
     /* ── FOOTER ──────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -879,6 +1084,12 @@
       }
 
       .float-card { display: none; }
+
+      .survey-inner {
+        grid-template-columns: 1fr;
+        padding: 28px;
+        gap: 28px;
+      }
 
       footer {
         flex-direction: column;
@@ -1150,6 +1361,46 @@
   </div>
 </section>
 
+<!-- SURVEY: Help us build arlo -->
+<section class="survey">
+  <div class="survey-inner">
+    <div class="survey-intro">
+      <div class="feature-label">Shape arlo</div>
+      <h2>Help us build arlo for you</h2>
+      <p>Your input helps us create a second brain that fits your life perfectly. It only takes 30 seconds.</p>
+
+      <div class="survey-steps">
+        <div class="survey-step active"><span class="survey-step-num">1</span> What best describes you?</div>
+        <div class="survey-step"><span class="survey-step-num">2</span> What do you struggle with most?</div>
+        <div class="survey-step"><span class="survey-step-num">3</span> What would you love arlo to help you do?</div>
+        <div class="survey-step"><span class="survey-step-num">4</span> Almost there!</div>
+      </div>
+
+      <div class="survey-privacy">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Your responses are private and help shape a better arlo.
+      </div>
+    </div>
+
+    <div class="survey-card">
+      <div id="survey-card-inner">
+        <div class="survey-card-head">
+          <div>
+            <h3 id="survey-q-title">What best describes you?</h3>
+            <p id="survey-q-sub">Select all that apply.</p>
+          </div>
+          <div class="survey-emoji" id="survey-emoji">🌍</div>
+        </div>
+        <div class="survey-options" id="survey-options"></div>
+        <button class="survey-next" id="survey-next" onclick="surveyNext()">
+          <span id="survey-next-label">Next</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band">
   <div class="cta-band-inner">
@@ -1196,6 +1447,102 @@
     if (form) form.style.display = 'none';
     if (success) success.style.display = 'flex';
   }
+
+  /* ── Survey: Help us build arlo ── */
+  const surveySteps = [
+    {
+      title: 'What best describes you?', sub: 'Select all that apply.', emoji: '🌍',
+      options: [
+        { icon: '🎓', label: 'Student' },
+        { icon: '💼', label: 'Professional' },
+        { icon: '✏️', label: 'Creator / Writer' },
+        { icon: '🚀', label: 'Entrepreneur / Founder' },
+        { icon: '💭', label: 'Other' },
+      ],
+    },
+    {
+      title: 'What do you struggle with most?', sub: 'Select all that apply.', emoji: '🧠',
+      options: [
+        { icon: '🗂️', label: 'Scattered saves everywhere' },
+        { icon: '🔍', label: 'Finding things later' },
+        { icon: '⏰', label: 'Following through on ideas' },
+        { icon: '📚', label: 'Information overload' },
+      ],
+    },
+    {
+      title: 'What would you love arlo to help you do?', sub: 'Select all that apply.', emoji: '✨',
+      options: [
+        { icon: '🔗', label: 'Connect my ideas' },
+        { icon: '✅', label: 'Turn saves into action' },
+        { icon: '💡', label: 'Resurface forgotten insights' },
+        { icon: '📈', label: 'Stay on top of projects' },
+      ],
+    },
+    {
+      title: 'Almost there!', sub: 'How did you hear about arlo?', emoji: '🎉',
+      options: [
+        { icon: '🐦', label: 'Social media' },
+        { icon: '👋', label: 'A friend' },
+        { icon: '🔎', label: 'Search' },
+        { icon: '📰', label: 'A newsletter' },
+      ],
+    },
+  ];
+
+  let surveyCurrent = 0;
+  const surveySelections = {};
+
+  function renderSurvey() {
+    const step = surveySteps[surveyCurrent];
+    document.getElementById('survey-q-title').textContent = step.title;
+    document.getElementById('survey-q-sub').textContent = step.sub;
+    document.getElementById('survey-emoji').textContent = step.emoji;
+
+    const selected = surveySelections[surveyCurrent] || new Set();
+    document.getElementById('survey-options').innerHTML = step.options.map(function (o, i) {
+      const isSel = selected.has(o.label);
+      return '<div class="survey-option' + (isSel ? ' selected' : '') + '" onclick="toggleSurveyOption(' + i + ')">' +
+        '<div class="survey-option-label"><div class="survey-option-emoji">' + o.icon + '</div>' + o.label + '</div>' +
+        '<div class="survey-check"><svg width="12" height="10" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="#FFF8F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+        '</div>';
+    }).join('');
+
+    document.querySelectorAll('.survey-step').forEach(function (el, i) {
+      el.classList.toggle('active', i === surveyCurrent);
+      el.classList.toggle('done', i < surveyCurrent);
+    });
+
+    document.getElementById('survey-next-label').textContent =
+      surveyCurrent === surveySteps.length - 1 ? 'Finish' : 'Next';
+  }
+
+  function toggleSurveyOption(i) {
+    const label = surveySteps[surveyCurrent].options[i].label;
+    if (!surveySelections[surveyCurrent]) surveySelections[surveyCurrent] = new Set();
+    const set = surveySelections[surveyCurrent];
+    set.has(label) ? set.delete(label) : set.add(label);
+    renderSurvey();
+  }
+
+  function surveyNext() {
+    if (surveyCurrent < surveySteps.length - 1) {
+      surveyCurrent++;
+      renderSurvey();
+    } else {
+      document.getElementById('survey-card-inner').innerHTML =
+        '<div class="survey-done">' +
+        '<div class="survey-done-emoji">🎉</div>' +
+        '<h3>Thank you!</h3>' +
+        '<p>Your answers help us build a better arlo — you\'re shaping what we build next.</p>' +
+        '</div>';
+      document.querySelectorAll('.survey-step').forEach(function (el) {
+        el.classList.remove('active');
+        el.classList.add('done');
+      });
+    }
+  }
+
+  renderSurvey();
 </script>
 
 </body>
