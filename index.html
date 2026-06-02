@@ -12,9 +12,23 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #fff;
             color: #1a1a1a;
             overflow-x: hidden;
+            /* One continuous backdrop for the whole page: colored glows up top
+               that melt down through cream into clean white — no hard seams. */
+            background:
+                radial-gradient(ellipse 60% 38% at 6% 2%,  rgba(238, 162, 115, 0.78) 0%, rgba(238,162,115,0) 60%),
+                radial-gradient(ellipse 60% 38% at 94% 2%, rgba(165, 205, 168, 0.78) 0%, rgba(165,205,168,0) 60%),
+                radial-gradient(ellipse 90% 30% at 50% 0%, rgba(255, 244, 235, 0.9) 0%, rgba(255,244,235,0) 55%),
+                linear-gradient(180deg,
+                    #f6ede3 0%,
+                    #f4ece2 14%,
+                    #f4efe7 30%,
+                    #f6f3ee 46%,
+                    #faf8f4 62%,
+                    #fdfcfa 78%,
+                    #ffffff 100%);
+            background-attachment: fixed;
         }
 
         /* ── HERO ── */
@@ -26,10 +40,7 @@
             justify-content: center;
             padding: 80px 24px 64px;
             text-align: center;
-            background:
-                radial-gradient(ellipse 65% 55% at 5% 5%,  rgba(238, 162, 115, 0.70) 0%, transparent 65%),
-                radial-gradient(ellipse 65% 55% at 95% 5%, rgba(170, 205, 170, 0.70) 0%, transparent 65%),
-                #f5f0ea;
+            background: transparent;
         }
 
         .logo-wrap {
@@ -107,10 +118,15 @@
             align-items: center;
             width: 100%;
             max-width: 460px;
-            background: white;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             border-radius: 100px;
             padding: 5px 5px 5px 22px;
-            box-shadow: 0 4px 26px rgba(0,0,0,0.13);
+            box-shadow:
+                0 10px 34px rgba(60, 40, 25, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             margin-bottom: 20px;
         }
 
@@ -174,7 +190,7 @@
 
         /* ── FEATURE SECTION ── */
         .feature-section {
-            background: #f5f4f0;
+            background: transparent;
             padding: 64px 24px 48px;
         }
 
@@ -184,13 +200,19 @@
         }
 
         .feature-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(26px) saturate(160%);
+            -webkit-backdrop-filter: blur(26px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.65);
             border-radius: 28px;
             padding: 52px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 44px;
-            box-shadow: 0 2px 28px rgba(0,0,0,0.06);
+            box-shadow:
+                0 20px 60px rgba(60, 40, 25, 0.10),
+                0 2px 10px rgba(60, 40, 25, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
         }
 
         .feature-tag {
@@ -405,10 +427,15 @@
         }
 
         .fcard {
-            background: white;
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             border-radius: 13px;
             padding: 11px 13px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+            box-shadow:
+                0 8px 26px rgba(60, 40, 25, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             min-width: 162px;
         }
 
@@ -472,17 +499,23 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            background: white;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 16px;
             padding: 18px 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            box-shadow:
+                0 10px 30px rgba(60, 40, 25, 0.07),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
         }
 
         .feat-icon-box {
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            background: #f5f4f0;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -494,7 +527,7 @@
 
         /* ── SURVEY SECTION ── */
         .survey-section {
-            background: white;
+            background: transparent;
             padding: 72px 24px;
         }
 
@@ -563,11 +596,15 @@
 
         /* Survey card */
         .survey-card {
-            background: white;
-            border: 1px solid #ebebeb;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             border-radius: 20px;
             padding: 28px;
-            box-shadow: 0 4px 26px rgba(0,0,0,0.07);
+            box-shadow:
+                0 18px 50px rgba(60, 40, 25, 0.10),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             position: relative;
         }
 
