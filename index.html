@@ -1076,32 +1076,13 @@
 
         <!-- Right: Survey card -->
         <div class="survey-card">
-            <span class="emoji-deco">🌍</span>
-            <h3>What best describes you?</h3>
-            <div class="select-all">Select all that apply.</div>
-
-            <div class="q-option" onclick="toggleCheck(this)">
-                <div class="q-label"><div class="q-icon">🎓</div> Student</div>
-                <div class="q-check"></div>
+            <span class="emoji-deco" id="surveyEmoji">🌍</span>
+            <div id="surveyBody">
+                <h3 id="surveyTitle">What best describes you?</h3>
+                <div class="select-all" id="surveySub">Select all that apply.</div>
+                <div id="surveyOptions"></div>
             </div>
-            <div class="q-option" onclick="toggleCheck(this)">
-                <div class="q-label"><div class="q-icon">💼</div> Professional</div>
-                <div class="q-check"></div>
-            </div>
-            <div class="q-option" onclick="toggleCheck(this)">
-                <div class="q-label"><div class="q-icon">✏️</div> Creator / Writer</div>
-                <div class="q-check"></div>
-            </div>
-            <div class="q-option" onclick="toggleCheck(this)">
-                <div class="q-label"><div class="q-icon">🚀</div> Entrepreneur / Founder</div>
-                <div class="q-check"></div>
-            </div>
-            <div class="q-option" onclick="toggleCheck(this)">
-                <div class="q-label"><div class="q-icon">💭</div> Other</div>
-                <div class="q-check"></div>
-            </div>
-
-            <button class="next-btn">Next &nbsp;→</button>
+            <button class="next-btn" id="surveyNext" onclick="surveyNext()">Next &nbsp;→</button>
         </div>
     </div>
 </section>
@@ -1141,16 +1122,113 @@
 </footer>
 
 <script>
-    function toggleCheck(option) {
-        const check = option.querySelector('.q-check');
-        if (check.classList.contains('checked')) {
-            check.classList.remove('checked');
-            check.innerHTML = '';
+    /* ── "Help us build Arlo for you" — multi-step survey ── */
+    const surveySteps = [
+        {
+            emoji: "🌍",
+            title: "What best describes you?",
+            sub: "Select all that apply.",
+            options: [["🎓", "Student"], ["💼", "Professional"], ["✏️", "Creator / Writer"], ["🚀", "Entrepreneur / Founder"], ["💭", "Other"]],
+        },
+        {
+            emoji: "🧠",
+            title: "What do you struggle with most?",
+            sub: "Select all that apply.",
+            options: [["🗂️", "Scattered notes everywhere"], ["🔍", "Finding things later"], ["⏰", "Following through on ideas"], ["📚", "Information overload"]],
+        },
+        {
+            emoji: "✨",
+            title: "What would you love Arlo to help you do?",
+            sub: "Select all that apply.",
+            options: [["🔗", "Connect my ideas"], ["✅", "Turn notes into tasks"], ["💡", "Surface forgotten insights"], ["📈", "Stay on top of projects"]],
+        },
+        {
+            emoji: "🎉",
+            title: "Almost there!",
+            sub: "How did you hear about Arlo?",
+            options: [["🐦", "Social media"], ["👋", "A friend"], ["🔎", "Search"], ["📰", "A newsletter"]],
+        },
+    ];
+
+    const checkSvg = '<svg width="11" height="9" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    let surveyCurrent = 0;
+    const surveySelections = surveySteps.map(() => new Set());
+
+    function toggleOption(idx) {
+        const set = surveySelections[surveyCurrent];
+        set.has(idx) ? set.delete(idx) : set.add(idx);
+        renderSurveyOptions();
+    }
+
+    function renderSurveyOptions() {
+        const step = surveySteps[surveyCurrent];
+        const set = surveySelections[surveyCurrent];
+        document.getElementById("surveyOptions").innerHTML = step.options
+            .map((opt, i) => {
+                const checked = set.has(i);
+                return (
+                    '<div class="q-option" onclick="toggleOption(' + i + ')">' +
+                        '<div class="q-label"><div class="q-icon">' + opt[0] + '</div> ' + opt[1] + '</div>' +
+                        '<div class="q-check' + (checked ? ' checked' : '') + '">' + (checked ? checkSvg : '') + '</div>' +
+                    '</div>'
+                );
+            })
+            .join("");
+    }
+
+    function renderSurveyRail() {
+        const stepEls = document.querySelectorAll(".s-steps .s-step");
+        stepEls.forEach((el, i) => {
+            const num = el.querySelector(".s-num");
+            const label = el.querySelector(".s-label");
+            const completed = i < surveyCurrent;
+            const active = i === surveyCurrent;
+            num.className = "s-num" + (completed || active ? " active" : " inactive");
+            num.innerHTML = completed ? "✓" : String(i + 1);
+            label.className = "s-label" + (completed || active ? "" : " inactive");
+        });
+    }
+
+    function renderSurvey() {
+        const step = surveySteps[surveyCurrent];
+        document.getElementById("surveyEmoji").textContent = step.emoji;
+        document.getElementById("surveyTitle").textContent = step.title;
+        document.getElementById("surveySub").textContent = step.sub;
+        document.getElementById("surveyNext").innerHTML =
+            (surveyCurrent === surveySteps.length - 1 ? "Finish" : "Next") + " &nbsp;→";
+        renderSurveyOptions();
+        renderSurveyRail();
+    }
+
+    function surveyNext() {
+        if (surveyCurrent < surveySteps.length - 1) {
+            surveyCurrent++;
+            renderSurvey();
         } else {
-            check.classList.add('checked');
-            check.innerHTML = '<svg width="11" height="9" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            showSurveyDone();
         }
     }
+
+    function showSurveyDone() {
+        document.getElementById("surveyEmoji").textContent = "🎉";
+        document.getElementById("surveyBody").innerHTML =
+            '<div style="padding:26px 0;text-align:center;">' +
+                '<div style="font-size:46px;margin-bottom:14px;">🎉</div>' +
+                '<h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">Thank you!</h3>' +
+                '<p style="font-size:14px;color:#777;line-height:1.6;">Your answers help us build a better Arlo. We&rsquo;ll be in touch soon.</p>' +
+            '</div>';
+        const next = document.getElementById("surveyNext");
+        next.style.display = "none";
+        // mark every step complete
+        document.querySelectorAll(".s-steps .s-step").forEach((el) => {
+            el.querySelector(".s-num").className = "s-num active";
+            el.querySelector(".s-num").innerHTML = "✓";
+            el.querySelector(".s-label").className = "s-label";
+        });
+    }
+
+    renderSurvey();
 </script>
 
 </body>
