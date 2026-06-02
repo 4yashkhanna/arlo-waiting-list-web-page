@@ -808,12 +808,36 @@
       background: radial-gradient(ellipse 60% 80% at 80% 50%, #CD7A5330 0%, transparent 70%);
     }
 
+    .cta-overline {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #FFDBCE;
+      background: rgba(255, 248, 245, 0.14);
+      border: 1px solid rgba(255, 248, 245, 0.28);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
     .cta-band-inner h2 {
       font-family: 'Lora', serif;
       font-size: clamp(26px, 4vw, 40px);
       font-weight: 700;
       color: #FFF8F5;
       margin-bottom: 12px;
+      position: relative;
+    }
+
+    .cta-fineprint {
+      font-size: 13px;
+      color: #FFDBCE;
+      opacity: 0.85;
+      margin-top: 16px;
+      margin-bottom: 0;
       position: relative;
     }
 
@@ -1427,12 +1451,14 @@
 <!-- CTA BAND -->
 <section class="cta-band">
   <div class="cta-band-inner">
-    <h2>Your saves deserve better.</h2>
-    <p>Join the list. Be first to use arlo when it launches.</p>
+    <span class="cta-overline">Be an early reader</span>
+    <h2>Start your library before<br>everyone else.</h2>
+    <p>You've seen what arlo does. Leave your email and you'll be first through the door when it launches — with a say in what we build next.</p>
     <form class="cta-band-form" onsubmit="handleSubmit(event, 'cta-form', 'cta-success')">
-      <input type="email" placeholder="Enter your email" required />
-      <button type="submit">Join waitlist</button>
+      <input type="email" placeholder="you@email.com" required />
+      <button type="submit">Get early access</button>
     </form>
+    <p class="cta-fineprint">No spam — just one note the day arlo's ready.</p>
     <div class="form-success" id="cta-success" style="color:#FFDBCE">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#FFDBCE" stroke-width="2"><path d="M2.5 8l4 4 7-7"/></svg>
       You're on the list — we'll be in touch soon.
