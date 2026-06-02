@@ -309,7 +309,8 @@
     .platform-web { background: var(--accent); }
     .platform-tt      { background: #111; }
     .platform-art     { background: var(--accent); }
-    .platform-shot    { background: var(--sage); }
+    .platform-cam     { background: var(--sage); }
+    .platform-shot    { background: var(--ink); }
     .platform-claude  { background: #D97757; }
     .platform-chatgpt { background: #10A37F; }
 
@@ -470,22 +471,35 @@
     .source-icons {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .source-pill {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-2);
-      background: var(--surface);
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--raised);
       border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 5px 12px;
+      border-radius: 14px;
+      padding: 9px 16px 9px 9px;
+      box-shadow: 0 2px 12px #0000000d;
     }
+
+    .src-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .src-icon svg { width: 22px; height: 22px; }
 
     .feature-wide-visual {
       background: var(--surface);
@@ -526,8 +540,9 @@
       height: auto;
       padding-bottom: 22px;
     }
-    .feature-wide-phone .float-card.notif  { left: -28px; top: 12%; }
-    .feature-wide-phone .float-card.ai-chip { right: -28px; bottom: 14%; top: auto; }
+    .feature-wide-phone .float-card { z-index: 20; }
+    .feature-wide-phone .float-card.notif  { left: -42px; top: 7%; }
+    .feature-wide-phone .float-card.ai-chip { right: -42px; bottom: 9%; top: auto; }
 
     /* two small cards */
     .feature-grid {
@@ -793,7 +808,7 @@
     }
 
     .cta-band-inner {
-      background: var(--sage);
+      background: #647563;
       border-radius: 24px;
       padding: 64px 48px;
       text-align: center;
@@ -1193,11 +1208,36 @@
       <h3>Everything you save,<br>finally&nbsp;useful</h3>
       <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. arlo's AI reads the whole thing, pulling out the specific names, steps, tools, and takeaways, and files it automatically.</p>
       <div class="source-icons">
-        <div class="source-pill"><span class="platform-icon platform-yt">▶</span> YouTube</div>
-        <div class="source-pill"><span class="platform-icon platform-ig">◈</span> Instagram</div>
-        <div class="source-pill"><span class="platform-icon platform-tt">♪</span> TikTok</div>
-        <div class="source-pill"><span class="platform-icon platform-art">◉</span> Articles</div>
-        <div class="source-pill"><span class="platform-icon platform-shot">⊞</span> Screenshots</div>
+        <div class="source-pill">
+          <span class="src-icon platform-yt">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8zM10 15.2V8.8l5.2 3.2z"/></svg>
+          </span>
+          YouTube
+        </div>
+        <div class="source-pill">
+          <span class="src-icon platform-ig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff" stroke="none"/></svg>
+          </span>
+          Instagram
+        </div>
+        <div class="source-pill">
+          <span class="src-icon platform-art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M9 9h5M9 13h6M9 17h4"/></svg>
+          </span>
+          Articles
+        </div>
+        <div class="source-pill">
+          <span class="src-icon platform-cam">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h3l1.5-2h9L18 8.5h3v11H3z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+          </span>
+          Camera
+        </div>
+        <div class="source-pill">
+          <span class="src-icon platform-shot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V6a2 2 0 0 1 2-2h3M20 9V6a2 2 0 0 0-2-2h-3M4 15v3a2 2 0 0 0 2 2h3M20 15v3a2 2 0 0 0-2 2h-3"/></svg>
+          </span>
+          Screenshots
+        </div>
       </div>
     </div>
 
