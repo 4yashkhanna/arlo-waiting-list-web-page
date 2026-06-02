@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>arlo — Your personal knowledge library</title>
-  <meta name="description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it — inside your favourite AI tools." />
-  <meta property="og:title" content="arlo — Your personal knowledge library" />
+  <title>arlo · Your personal knowledge library</title>
+  <meta name="description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it, inside your favourite AI tools." />
+  <meta property="og:title" content="arlo · Your personal knowledge library" />
   <meta property="og:description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,7 +60,7 @@
     nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 20px 40px;
       max-width: 1100px;
       margin: 0 auto;
@@ -793,7 +793,7 @@
     }
 
     .cta-band-inner {
-      background: var(--accent);
+      background: var(--sage);
       border-radius: 24px;
       padding: 64px 48px;
       text-align: center;
@@ -805,22 +805,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 80% 50%, #CD7A5330 0%, transparent 70%);
-    }
-
-    .cta-overline {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #FFDBCE;
-      background: rgba(255, 248, 245, 0.14);
-      border: 1px solid rgba(255, 248, 245, 0.28);
-      padding: 6px 14px;
-      border-radius: 50px;
-      margin-bottom: 20px;
-      position: relative;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, #D2E4D233 0%, transparent 70%);
     }
 
     .cta-band-inner h2 {
@@ -832,18 +817,9 @@
       position: relative;
     }
 
-    .cta-fineprint {
-      font-size: 13px;
-      color: #FFDBCE;
-      opacity: 0.85;
-      margin-top: 16px;
-      margin-bottom: 0;
-      position: relative;
-    }
-
     .cta-band-inner p {
       font-size: 17px;
-      color: #FFDBCE;
+      color: #D2E4D2;
       margin-bottom: 36px;
       position: relative;
     }
@@ -869,7 +845,7 @@
       color: #FFF8F5;
       min-width: 0;
     }
-    .cta-band-form input::placeholder { color: #FFDBCE; }
+    .cta-band-form input::placeholder { color: #D2E4D2; }
 
     .cta-band-form button {
       background: #FFF8F5;
@@ -1171,7 +1147,6 @@
 <!-- NAV -->
 <nav>
   <a class="nav-wordmark" href="#">arlo</a>
-  <a class="nav-cta" href="#waitlist">Join waitlist</a>
 </nav>
 
 <!-- HERO -->
@@ -1183,9 +1158,9 @@
     AI memory that works for you
   </div>
 
-  <h1>Your second brain<br>for <em>everything</em> that matters</h1>
+  <h1>Your second brain<br>for <em>everything</em> that&nbsp;matters</h1>
 
-  <p>arlo captures, reads, and organizes the things you save — so you can find, remember, and act on what matters.</p>
+  <p>arlo captures, reads, and organizes the things you save, so you can find, remember, and act on what matters.</p>
 
   <form class="email-form" id="hero-form" onsubmit="handleSubmit(event, 'hero-form', 'hero-success')">
     <input type="email" placeholder="Enter your email" required />
@@ -1196,14 +1171,14 @@
   </form>
   <div class="form-success" id="hero-success">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#526254" stroke-width="2"><path d="M2.5 8l4 4 7-7"/></svg>
-    You're on the list — we'll be in touch soon.
+    You're on the list. We will be in touch soon.
   </div>
 
   <div class="social-proof">
     <div class="avatars">
       <span>Y</span><span>A</span><span>M</span>
     </div>
-    <p>Join the <strong>early readers</strong> — first access before launch</p>
+    <p>Join the <strong>early readers</strong> for first access before launch</p>
   </div>
 
 </section>
@@ -1215,8 +1190,8 @@
   <div class="feature-wide">
     <div>
       <div class="feature-label">Save anything</div>
-      <h3>Everything you save,<br>finally useful</h3>
-      <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. arlo's AI reads the whole thing — pulling out the specific names, steps, tools, and takeaways — and files it automatically.</p>
+      <h3>Everything you save,<br>finally&nbsp;useful</h3>
+      <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. arlo's AI reads the whole thing, pulling out the specific names, steps, tools, and takeaways, and files it automatically.</p>
       <div class="source-icons">
         <div class="source-pill"><span class="platform-icon platform-yt">▶</span> YouTube</div>
         <div class="source-pill"><span class="platform-icon platform-ig">◈</span> Instagram</div>
@@ -1233,7 +1208,7 @@
           <div class="float-icon">🔔</div>
           <div>
             <strong>Remember this?</strong>
-            <span>Claude connectors — 3 weeks ago</span>
+            <span>Claude connectors · 3 weeks ago</span>
           </div>
         </div>
         <div class="float-card ai-chip">
@@ -1268,7 +1243,7 @@
                   <div class="platform-icon platform-art">◉</div>
                   <span style="font-size:11px;color:var(--ink-3)">Article · Saved</span>
                 </div>
-                <div class="phone-card-title">Atomic Habits summary — James Clear</div>
+                <div class="phone-card-title">Atomic Habits summary by James Clear</div>
                 <span class="phone-tag">#habits</span>
                 <span class="phone-tag">#productivity</span>
               </div>
@@ -1285,14 +1260,14 @@
       <div class="feature-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </div>
-      <h3>Ask your library anything.</h3>
-      <p>Chat with everything you've saved. arlo answers from your own collection, citing the exact saves it used — inside the app or right inside Claude and ChatGPT.</p>
+      <h3>Ask your library&nbsp;anything.</h3>
+      <p>Chat with everything you've saved. arlo answers from your own collection, citing the exact saves it used, inside the app or right inside Claude and ChatGPT.</p>
       <div class="feature-visual">
         <div class="mini-bubble user">"What did I save about Photoshop automation?"</div>
         <div class="mini-bubble">You saved a reel 3 days ago covering JSX batch scripts and the exact Action Manager calls for layer export.</div>
         <div class="mini-source">
           <div class="platform-icon platform-ig" style="width:16px;height:16px;font-size:8px;border-radius:4px">◈</div>
-          Photoshop automation — saved 3 days ago
+          Photoshop automation · saved 3 days ago
         </div>
         <div class="connector-pills">
           <div class="connector-pill"><span class="platform-icon platform-claude">✦</span> Claude</div>
@@ -1305,21 +1280,21 @@
       <div class="feature-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
       </div>
-      <h3>Good ideas don't get buried.</h3>
-      <p>A gentle nudge on your phone, or proactively inside Claude and ChatGPT while you work — arlo resurfaces the right save at the right moment, without you having to ask.</p>
+      <h3>Good ideas don't get&nbsp;buried.</h3>
+      <p>A gentle nudge on your phone, or proactively inside Claude and ChatGPT while you work, arlo resurfaces the right save at the right moment, without you having to ask.</p>
       <div class="feature-visual">
         <div class="resurface-card">
           <div class="resurface-icon">🔔</div>
           <div class="resurface-text">
             <strong>Remember this?</strong>
-            <span>You saved "Claude MCP connectors" 3 weeks ago — want to build on it?</span>
+            <span>You saved "Claude MCP connectors" 3 weeks ago. Want to build on it?</span>
           </div>
         </div>
         <div class="resurface-card" style="opacity:0.65">
           <div class="resurface-icon">✦</div>
           <div class="resurface-text">
             <strong>By the way…</strong>
-            <span>You saved something about this — "Photoshop layer scripts" from last week.</span>
+            <span>You saved something about this: "Photoshop layer scripts" from last week.</span>
           </div>
         </div>
       </div>
@@ -1359,7 +1334,7 @@
   <div class="survey-inner">
     <div class="survey-intro">
       <div class="feature-label">Shape arlo</div>
-      <h2>Help us build arlo for you</h2>
+      <h2>Help us build arlo for&nbsp;you</h2>
       <p>Your input helps us create a second brain that fits your life perfectly. It only takes 30 seconds.</p>
 
       <div class="survey-steps">
@@ -1396,7 +1371,7 @@
 
 <!-- FAQ -->
 <section class="faq">
-  <h2>Frequently asked questions</h2>
+  <h2>Frequently asked&nbsp;questions</h2>
   <p>Everything you need to know before joining the list.</p>
 
   <div class="faq-item open">
@@ -1404,7 +1379,7 @@
       <span>What is arlo?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">A personal knowledge library for your iPhone. Save any link, video, reel, or screenshot, and arlo's AI reads it, organizes it, and makes it searchable — so the things you save are actually useful later.</div>
+    <div class="faq-a">A personal knowledge library for your iPhone. Save any link, video, reel, or screenshot, and arlo's AI reads it, organizes it, and makes it searchable, so the things you save are actually useful later.</div>
   </div>
 
   <div class="faq-item">
@@ -1412,7 +1387,7 @@
       <span>What can I save?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">YouTube videos, Instagram reels, TikToks, articles, web pages, photos, and screenshots — straight from the iOS share sheet or inside the app. arlo pulls out the specific details automatically.</div>
+    <div class="faq-a">YouTube videos, Instagram reels, TikToks, articles, web pages, photos, and screenshots, straight from the iOS share sheet or inside the app. arlo pulls out the specific details automatically.</div>
   </div>
 
   <div class="faq-item">
@@ -1420,7 +1395,7 @@
       <span>How is it different from just bookmarking?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">Bookmarks pile up and get forgotten. arlo understands what you saved, lets you search by meaning, chat with your library, and resurfaces things at the right moment — without you having to remember to look.</div>
+    <div class="faq-a">Bookmarks pile up and get forgotten. arlo understands what you saved, lets you search by meaning, chat with your library, and resurfaces things at the right moment, without you having to remember to look.</div>
   </div>
 
   <div class="faq-item">
@@ -1428,7 +1403,7 @@
       <span>Does it work with Claude and ChatGPT?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">Yes — connect arlo once via MCP and your entire library becomes available inside Claude and ChatGPT. Ask a question in your AI chat and it'll quietly check your saves first and surface anything relevant.</div>
+    <div class="faq-a">Yes. Connect arlo once via MCP and your entire library becomes available inside Claude and ChatGPT. Ask a question in your AI chat and it'll quietly check your saves first and surface anything relevant.</div>
   </div>
 
   <div class="faq-item">
@@ -1436,7 +1411,7 @@
       <span>Is my library private?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">Yes. Your saves are yours — used only to power your own search, chat, and recall. Nothing is shared or used to train models.</div>
+    <div class="faq-a">Yes. Your saves are yours, used only to power your own search, chat, and recall. Nothing is shared or used to train models.</div>
   </div>
 
   <div class="faq-item">
@@ -1451,17 +1426,15 @@
 <!-- CTA BAND -->
 <section class="cta-band">
   <div class="cta-band-inner">
-    <span class="cta-overline">Be an early reader</span>
-    <h2>Start your library before<br>everyone else.</h2>
-    <p>You've seen what arlo does. Leave your email and you'll be first through the door when it launches — with a say in what we build next.</p>
+    <h2>Your saves deserve&nbsp;better.</h2>
+    <p>Join the list. Be first to use arlo when it launches.</p>
     <form class="cta-band-form" onsubmit="handleSubmit(event, 'cta-form', 'cta-success')">
-      <input type="email" placeholder="you@email.com" required />
-      <button type="submit">Get early access</button>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Join waitlist</button>
     </form>
-    <p class="cta-fineprint">No spam — just one note the day arlo's ready.</p>
-    <div class="form-success" id="cta-success" style="color:#FFDBCE">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#FFDBCE" stroke-width="2"><path d="M2.5 8l4 4 7-7"/></svg>
-      You're on the list — we'll be in touch soon.
+    <div class="form-success" id="cta-success" style="color:#D2E4D2">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#D2E4D2" stroke-width="2"><path d="M2.5 8l4 4 7-7"/></svg>
+      You're on the list. We'll be in touch soon.
     </div>
   </div>
 </section>
@@ -1582,7 +1555,7 @@
         '<div class="survey-done">' +
         '<div class="survey-done-emoji">🎉</div>' +
         '<h3>Thank you!</h3>' +
-        '<p>Your answers help us build a better arlo — you\'re shaping what we build next.</p>' +
+        '<p>Your answers help us build a better arlo. You\'re shaping what we build next.</p>' +
         '</div>';
       document.querySelectorAll('.survey-step').forEach(function (el) {
         el.classList.remove('active');
