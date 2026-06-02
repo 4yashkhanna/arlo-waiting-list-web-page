@@ -1,1234 +1,1201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arlo — Your second brain for everything that matters</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #1a1a1a;
-            overflow-x: hidden;
-            /* One continuous backdrop for the whole page: colored glows up top
-               that melt down through cream into clean white — no hard seams. */
-            background:
-                radial-gradient(ellipse 60% 38% at 6% 2%,  rgba(238, 162, 115, 0.78) 0%, rgba(238,162,115,0) 60%),
-                radial-gradient(ellipse 60% 38% at 94% 2%, rgba(165, 205, 168, 0.78) 0%, rgba(165,205,168,0) 60%),
-                radial-gradient(ellipse 90% 30% at 50% 0%, rgba(255, 244, 235, 0.9) 0%, rgba(255,244,235,0) 55%),
-                linear-gradient(180deg,
-                    #f6ede3 0%,
-                    #f4ece2 14%,
-                    #f4efe7 30%,
-                    #f6f3ee 46%,
-                    #faf8f4 62%,
-                    #fdfcfa 78%,
-                    #ffffff 100%);
-            background-attachment: fixed;
-        }
-
-        /* ── HERO ── */
-        .hero {
-            min-height: 88vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 24px 64px;
-            text-align: center;
-            background: transparent;
-        }
-
-        .logo-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-
-        .logo-box {
-            width: 68px;
-            height: 68px;
-            background: white;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 18px rgba(0,0,0,0.13);
-        }
-
-        .logo-name {
-            font-size: 21px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            color: #1a1a1a;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.13em;
-            color: #C94B27;
-            text-transform: uppercase;
-            margin-bottom: 26px;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-            font-size: clamp(38px, 5.5vw, 58px);
-            font-weight: 700;
-            line-height: 1.1;
-            color: #1a1a1a;
-            max-width: 640px;
-            margin-bottom: 18px;
-        }
-
-        .hero h1 em {
-            color: #C94B27;
-            font-style: italic;
-        }
-
-        .hero-sub {
-            font-size: 16px;
-            color: #666;
-            max-width: 440px;
-            line-height: 1.65;
-            margin-bottom: 10px;
-        }
-
-        .coming-soon-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 30px;
-        }
-
-        .email-form {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 460px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 100px;
-            padding: 5px 5px 5px 22px;
-            box-shadow:
-                0 10px 34px rgba(60, 40, 25, 0.14),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-        }
-
-        .email-form input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 14px;
-            background: transparent;
-            font-family: inherit;
-            color: #1a1a1a;
-            min-width: 0;
-        }
-
-        .email-form input::placeholder { color: #bbb; }
-
-        .email-form button {
-            background: #C94B27;
-            color: white;
-            border: none;
-            border-radius: 100px;
-            padding: 13px 22px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: background 0.2s;
-        }
-
-        .email-form button:hover { background: #b33d1e; }
-
-        .social-proof {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            color: #666;
-        }
-
-        .avatar-stack { display: flex; }
-
-        .av {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-left: -9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .av:first-child { margin-left: 0; }
-
-        /* ── FEATURE SECTION ── */
-        .feature-section {
-            background: transparent;
-            padding: 64px 24px 48px;
-        }
-
-        .feature-card-wrap {
-            max-width: 1040px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(26px) saturate(160%);
-            -webkit-backdrop-filter: blur(26px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.65);
-            border-radius: 28px;
-            padding: 52px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 44px;
-            box-shadow:
-                0 20px 60px rgba(60, 40, 25, 0.10),
-                0 2px 10px rgba(60, 40, 25, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-        }
-
-        .feature-tag {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #C94B27;
-            margin-bottom: 14px;
-        }
-
-        .feature-card h2 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 36px;
-            font-weight: 700;
-            line-height: 1.1;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-        }
-
-        .feature-desc {
-            font-size: 14px;
-            color: #777;
-            line-height: 1.7;
-            margin-bottom: 28px;
-        }
-
-        .source-icons {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-
-        .si {
-            width: 34px;
-            height: 34px;
-            border-radius: 9px;
-            background: #f2f1ee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .anywhere {
-            font-size: 13px;
-            color: #aaa;
-            font-style: italic;
-        }
-
-        /* Phone */
-        .phone-col {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }
-
-        .phone-shell {
-            width: 196px;
-            height: 416px;
-            background: #111;
-            border-radius: 34px;
-            padding: 11px;
-            box-shadow: 0 18px 60px rgba(0,0,0,0.36), 0 4px 14px rgba(0,0,0,0.14);
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #f5f5f5;
-            border-radius: 26px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .p-notch {
-            position: absolute;
-            top: 11px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 68px;
-            height: 20px;
-            background: #111;
-            border-radius: 0 0 14px 14px;
-            z-index: 2;
-        }
-
-        .p-statusbar {
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 14px;
-            background: #f5f5f5;
-            flex-shrink: 0;
-        }
-
-        .p-time { font-size: 8px; font-weight: 700; color: #1a1a1a; }
-
-        .p-icons {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-        }
-
-        .p-body {
-            flex: 1;
-            padding: 4px 10px 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .p-greeting { font-size: 9px; font-weight: 800; color: #1a1a1a; }
-        .p-greeting-sub { font-size: 6.5px; color: #888; margin-bottom: 7px; }
-
-        .p-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 4px;
-        }
-
-        .p-tabs {
-            display: flex;
-            gap: 3px;
-            margin-bottom: 9px;
-            overflow: hidden;
-        }
-
-        .p-tab {
-            background: #e5e5e5;
-            border-radius: 20px;
-            padding: 2px 6px;
-            font-size: 6px;
-            color: #555;
-            white-space: nowrap;
-        }
-
-        .p-tab.active { background: #1a1a1a; color: white; }
-
-        .p-section { font-size: 7.5px; font-weight: 700; color: #1a1a1a; margin-bottom: 5px; }
-
-        .p-pinned {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3px;
-            margin-bottom: 9px;
-        }
-
-        .p-pin-card {
-            border-radius: 7px;
-            height: 54px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .p-pin-label {
-            position: absolute;
-            bottom: 3px;
-            left: 3px;
-            right: 3px;
-            font-size: 4.5px;
-            font-weight: 600;
-            color: #1a1a1a;
-            line-height: 1.35;
-        }
-
-        .p-pin-meta { font-weight: 400; color: #666; }
-
-        .p-recent-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 0;
-            border-bottom: 1px solid #ececec;
-        }
-
-        .p-item-thumb {
-            width: 22px;
-            height: 22px;
-            border-radius: 5px;
-            flex-shrink: 0;
-        }
-
-        .p-item-title { font-size: 6.5px; font-weight: 600; color: #1a1a1a; line-height: 1.35; }
-        .p-item-meta  { font-size: 5.5px; color: #aaa; }
-
-        .p-fab {
-            position: absolute;
-            bottom: 14px;
-            right: 12px;
-            width: 22px;
-            height: 22px;
-            background: #C94B27;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 3;
-        }
-
-        /* Floating cards */
-        .fcards {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding-top: 18px;
-        }
-
-        .fcard {
-            background: rgba(255, 255, 255, 0.62);
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 13px;
-            padding: 11px 13px;
-            box-shadow:
-                0 8px 26px rgba(60, 40, 25, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            min-width: 162px;
-        }
-
-        .fcard-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 9px;
-        }
-
-        .fcard-icon {
-            width: 26px;
-            height: 26px;
-            border-radius: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .fcard-type  { font-size: 9px; color: #aaa; margin-bottom: 2px; }
-        .fcard-title { font-size: 11px; font-weight: 600; color: #1a1a1a; line-height: 1.25; }
-        .fcard-url   { font-size: 9px; color: #ccc; margin-top: 2px; }
-
-        .saved-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 9px;
-            padding-top: 8px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .saved-lbl {
-            font-size: 10px;
-            font-weight: 500;
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .saved-check {
-            width: 18px;
-            height: 18px;
-            background: #22c55e;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Three feature items */
-        .feat-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 28px;
-        }
-
-        .feat-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
-            padding: 18px 16px;
-            box-shadow:
-                0 10px 30px rgba(60, 40, 25, 0.07),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-        }
-
-        .feat-icon-box {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .feat-item h3 { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: #1a1a1a; }
-        .feat-item p  { font-size: 12px; color: #999; line-height: 1.5; }
-
-        /* ── SURVEY SECTION ── */
-        .survey-section {
-            background: transparent;
-            padding: 72px 24px;
-        }
-
-        .survey-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 56px;
-            align-items: start;
-        }
-
-        .survey-left h2 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 36px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 14px;
-            color: #1a1a1a;
-        }
-
-        .survey-blurb {
-            font-size: 14px;
-            color: #777;
-            line-height: 1.65;
-            margin-bottom: 32px;
-        }
-
-        .s-steps { display: flex; flex-direction: column; gap: 14px; }
-
-        .s-step {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-        }
-
-        .s-num {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .s-num.active   { background: #C94B27; color: white; }
-        .s-num.inactive { background: #eee; color: #bbb; }
-
-        .s-label          { font-size: 13px; font-weight: 500; color: #1a1a1a; }
-        .s-label.inactive { color: #bbb; }
-
-        .s-privacy {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid #f0f0f0;
-            font-size: 11.5px;
-            color: #bbb;
-            line-height: 1.5;
-        }
-
-        /* Survey card */
-        .survey-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow:
-                0 18px 50px rgba(60, 40, 25, 0.10),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            position: relative;
-        }
-
-        .survey-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #1a1a1a; }
-        .select-all { font-size: 12px; color: #aaa; margin-bottom: 18px; }
-
-        .q-option {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 11px 0;
-            cursor: pointer;
-            border-bottom: 1px solid #f5f5f5;
-            transition: opacity 0.15s;
-        }
-
-        .q-option:last-of-type { border-bottom: none; }
-        .q-option:hover { opacity: 0.7; }
-
-        .q-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            color: #1a1a1a;
-        }
-
-        .q-icon {
-            width: 30px;
-            height: 30px;
-            background: #f7f7f5;
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-        }
-
-        .q-check {
-            width: 19px;
-            height: 19px;
-            border: 1.5px solid #ddd;
-            border-radius: 5px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.15s;
-        }
-
-        .q-check.checked {
-            background: #C94B27;
-            border-color: #C94B27;
-        }
-
-        .next-btn {
-            width: 100%;
-            background: #faeee8;
-            color: #C94B27;
-            border: none;
-            border-radius: 100px;
-            padding: 15px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 18px;
-            transition: background 0.2s;
-        }
-
-        .next-btn:hover { background: #f5e1d6; }
-
-        .emoji-deco {
-            position: absolute;
-            top: 14px;
-            right: 16px;
-            font-size: 28px;
-        }
-
-        /* ── FOOTER VALUES ── */
-        .footer-vals {
-            border-top: 1px solid #f0f0f0;
-            padding: 36px 24px;
-            background: white;
-        }
-
-        .fv-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .fv-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .fv-icon-box {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: #faeee8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .fv-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: #1a1a1a; }
-        .fv-text  { font-size: 12px; color: #999; line-height: 1.45; }
-
-        /* ── SITE FOOTER ── */
-        .site-footer {
-            border-top: 1px solid #f0f0f0;
-            padding: 20px 24px;
-            text-align: center;
-            background: white;
-        }
-
-        .site-footer p { font-size: 12.5px; color: #bbb; }
-
-        .site-footer a {
-            color: #999;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .site-footer a:hover { color: #555; }
-
-        /* Responsive */
-        @media (max-width: 820px) {
-            .feature-card { grid-template-columns: 1fr; }
-            .phone-col { justify-content: center; }
-            .feat-row { grid-template-columns: 1fr; }
-            .survey-inner { grid-template-columns: 1fr; }
-            .fv-inner { grid-template-columns: 1fr; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>arlo — Your personal knowledge library</title>
+  <meta name="description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it — inside your favourite AI tools." />
+  <meta property="og:title" content="arlo — Your personal knowledge library" />
+  <meta property="og:description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #FFF8F5;
+      --surface:   #FBF2ED;
+      --raised:    #FFFFFF;
+      --accent:    #944521;
+      --accent-lt: #CD7A53;
+      --accent-soft: #FFDBCE;
+      --sage:      #526254;
+      --sage-bg:   #D2E4D2;
+      --ink:       #1E1B18;
+      --ink-2:     #55433C;
+      --ink-3:     #88726B;
+      --border:    #DBC1B8;
+      --r:         14px;
+      --r-sm:      8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND WASH ─────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, #F5C9AD55 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 10%, #D2E4D240 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 50% 100%, #D2E4D230 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #FFF8F5;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.12s;
+    }
+    .nav-cta:hover { background: #7a3818; transform: translateY(-1px); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 0;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero-badge svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(38px, 7vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: var(--ink-2);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    /* ── EMAIL FORM ──────────────────────────────────── */
+    .email-form {
+      display: flex;
+      max-width: 480px;
+      margin: 0 auto 20px;
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 5px 5px 5px 22px;
+      box-shadow: 0 4px 24px #00000010;
+    }
+
+    .email-form input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      min-width: 0;
+    }
+    .email-form input::placeholder { color: var(--ink-3); }
+
+    .email-form button {
+      background: var(--accent);
+      color: #FFF8F5;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.18s, transform 0.12s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .email-form button:hover { background: #7a3818; transform: translateY(-1px); }
+    .email-form button svg { width: 14px; height: 14px; }
+
+    .form-success {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--sage);
+      padding: 14px 0;
+    }
+
+    .social-proof {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 64px;
+    }
+
+    .avatars {
+      display: flex;
+    }
+    .avatars span {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-left: -8px;
+    }
+    .avatars span:first-child { margin-left: 0; }
+
+    .social-proof p {
+      font-size: 13px;
+      color: var(--ink-3);
+      margin: 0;
+    }
+    .social-proof p strong { color: var(--ink-2); }
+
+    /* ── PHONE MOCKUP ─────────────────────────────────── */
+    .phone-wrap {
+      position: relative;
+      max-width: 320px;
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+
+    .phone-frame {
+      background: #1A1816;
+      border-radius: 44px;
+      padding: 14px;
+      box-shadow:
+        0 40px 80px #00000035,
+        0 0 0 1px #3A332F,
+        inset 0 0 0 1px #2B2724;
+    }
+
+    .phone-screen {
+      background: #FFF8F5;
+      border-radius: 32px;
+      overflow: hidden;
+      aspect-ratio: 9/19.5;
+      position: relative;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 28px;
+      background: #1A1816;
+      border-radius: 20px;
+      z-index: 10;
+    }
+
+    .phone-ui {
+      padding: 50px 16px 16px;
+      height: 100%;
+    }
+
+    .phone-header {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .phone-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px #00000008;
+    }
+
+    .phone-card-platform {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .platform-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .platform-yt  { background: #FF0000; }
+    .platform-ig  { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .platform-web { background: var(--accent); }
+
+    .phone-card-title {
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .phone-card-summary {
+      font-size: 11px;
+      color: var(--ink-3);
+      line-height: 1.5;
+    }
+
+    .phone-tag {
+      display: inline-block;
+      font-size: 10px;
+      color: var(--ink-3);
+      background: var(--surface);
+      border-radius: 50px;
+      padding: 2px 8px;
+      margin-top: 5px;
+      margin-right: 3px;
+    }
+
+    /* floating cards */
+    .float-card {
+      position: absolute;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 32px #00000018;
+      font-size: 12px;
+      white-space: nowrap;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .float-card.notif {
+      left: -80px;
+      top: 30%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation-delay: 0s;
+    }
+
+    .float-card.ai-chip {
+      right: -70px;
+      top: 55%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      animation-delay: 1.5s;
+    }
+
+    .float-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .float-card strong { color: var(--ink); font-weight: 600; display: block; font-size: 12px; }
+    .float-card span   { color: var(--ink-3); font-size: 11px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+
+    /* ── FEATURES ─────────────────────────────────────── */
+    .features {
+      max-width: 1060px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .features-header h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .features-header p {
+      font-size: 17px;
+      color: var(--ink-2);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* wide card */
+    .feature-wide {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 24px #00000008;
+    }
+
+    .feature-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 16px;
+    }
+
+    .feature-wide h3 {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .feature-wide p {
+      font-size: 16px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .source-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .source-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-2);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 5px 12px;
+    }
+
+    .feature-wide-visual {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    /* two small cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 80px;
+    }
+
+    .feature-card {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 2px 24px #00000008;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .feature-visual {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+
+    /* mini chat bubbles */
+    .mini-bubble {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .mini-bubble.user {
+      background: var(--sage-bg);
+      color: var(--sage);
+      text-align: right;
+      font-style: italic;
+    }
+    .mini-source {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--ink-3);
+      margin-top: 4px;
+    }
+
+    /* resurfacing card */
+    .resurface-card {
+      background: var(--raised);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 16px #00000010;
+    }
+    .resurface-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .resurface-text strong {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+    }
+    .resurface-text span {
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
+    .connector-pills {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .connector-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-2);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 4px 12px;
+    }
+
+    /* ── TRUST BAR ───────────────────────────────────── */
+    .trust-bar {
+      max-width: 1060px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .trust-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .trust-item {
+      background: var(--raised);
+      padding: 32px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .trust-item-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .trust-item strong {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .trust-item p {
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    /* ── FAQ ─────────────────────────────────────────── */
+    .faq {
+      max-width: 720px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .faq h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      text-align: center;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .faq > p {
+      text-align: center;
+      font-size: 16px;
+      color: var(--ink-3);
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--raised);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: 0 4px 20px #00000010; }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      gap: 16px;
+    }
+
+    .faq-q span {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .faq-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      line-height: 1;
+      transition: background 0.18s, transform 0.2s;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+      background: var(--accent);
+    }
+
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── CTA BAND ─────────────────────────────────────── */
+    .cta-band {
+      max-width: 1060px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .cta-band-inner {
+      background: var(--accent);
+      border-radius: 24px;
+      padding: 64px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, #CD7A5330 0%, transparent 70%);
+    }
+
+    .cta-band-inner h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      color: #FFF8F5;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .cta-band-inner p {
+      font-size: 17px;
+      color: #FFDBCE;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .cta-band-form {
+      display: flex;
+      max-width: 440px;
+      margin: 0 auto;
+      background: rgba(255,248,245,0.15);
+      border: 1px solid rgba(255,248,245,0.3);
+      border-radius: 50px;
+      padding: 5px 5px 5px 22px;
+      position: relative;
+    }
+
+    .cta-band-form input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #FFF8F5;
+      min-width: 0;
+    }
+    .cta-band-form input::placeholder { color: #FFDBCE; }
+
+    .cta-band-form button {
+      background: #FFF8F5;
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.18s;
+    }
+    .cta-band-form button:hover { opacity: 0.9; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .wordmark {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--ink-3);
+    }
+
+    footer nav {
+      display: flex;
+      gap: 24px;
+      padding: 0;
+      max-width: none;
+      margin: 0;
+    }
+
+    footer a {
+      font-size: 13px;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 760px) {
+      nav { padding: 16px 20px; }
+
+      .feature-wide {
+        grid-template-columns: 1fr;
+        padding: 28px;
+        gap: 24px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .float-card { display: none; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ══════════════ HERO ══════════════ -->
-<section class="hero">
-    <div class="logo-wrap">
-        <div class="logo-box">
-            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 5 L24.8 16 L37 17 L28 25 L30.8 37 L21 31 L11.2 37 L14 25 L5 17 L17.2 16 Z"
-                      fill="#C94B27" stroke="#C94B27" stroke-width="0.5" stroke-linejoin="round"/>
-            </svg>
+<!-- NAV -->
+<nav>
+  <a class="nav-wordmark" href="#">arlo</a>
+  <a class="nav-cta" href="#waitlist">Join waitlist</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="waitlist">
+  <div class="hero-badge">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 1l1.5 4.5H14l-3.7 2.7 1.4 4.3L8 10l-3.7 2.5 1.4-4.3L2 5.5h4.5z"/>
+    </svg>
+    AI memory that works for you
+  </div>
+
+  <h1>Your second brain<br>for <em>everything</em> that matters</h1>
+
+  <p>arlo captures, reads, and organizes the things you save — so you can find, remember, and act on what matters.</p>
+
+  <form class="email-form" id="hero-form" onsubmit="handleSubmit(event, 'hero-form', 'hero-success')">
+    <input type="email" placeholder="Enter your email" required />
+    <button type="submit">
+      Join the waitlist
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </button>
+  </form>
+  <div class="form-success" id="hero-success">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#526254" stroke-width="2"><path d="M2.5 8l4 4 7-7"/></svg>
+    You're on the list — we'll be in touch soon.
+  </div>
+
+  <div class="social-proof">
+    <div class="avatars">
+      <span>Y</span><span>A</span><span>M</span>
+    </div>
+    <p>Join the <strong>early readers</strong> — first access before launch</p>
+  </div>
+
+  <!-- Phone mockup -->
+  <div class="phone-wrap">
+
+    <div class="float-card notif">
+      <div class="float-icon">🔔</div>
+      <div>
+        <strong>Remember this?</strong>
+        <span>Claude connectors — 3 weeks ago</span>
+      </div>
+    </div>
+
+    <div class="float-card ai-chip">
+      <div class="float-icon">✦</div>
+      <div>
+        <strong>Reading it for you…</strong>
+        <span>Extracting key insights</span>
+      </div>
+    </div>
+
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="phone-notch"></div>
+        <div class="phone-ui">
+          <div class="phone-header">arlo</div>
+
+          <div class="phone-card">
+            <div class="phone-card-platform">
+              <div class="platform-icon platform-yt">▶</div>
+              <span style="font-size:11px;color:var(--ink-3)">YouTube · 2h ago</span>
+            </div>
+            <div class="phone-card-title">How Claude MCP connectors actually work</div>
+            <div class="phone-card-summary">Covers the 5 native connectors, custom OAuth setup, and the streamable HTTP spec vs stdio.</div>
+            <span class="phone-tag">#claude</span>
+            <span class="phone-tag">#mcp</span>
+          </div>
+
+          <div class="phone-card">
+            <div class="phone-card-platform">
+              <div class="platform-icon platform-ig">◈</div>
+              <span style="font-size:11px;color:var(--ink-3)">Instagram · Yesterday</span>
+            </div>
+            <div class="phone-card-title">Photoshop automation with scripts</div>
+            <div class="phone-card-summary">Batch export layers using JSX + Action Manager. Names the exact API calls for layer iteration.</div>
+            <span class="phone-tag">#photoshop</span>
+            <span class="phone-tag">#automation</span>
+          </div>
         </div>
-        <span class="logo-name">arlo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header">
+    <h2>Everything you save,<br>finally useful</h2>
+    <p>arlo reads, organizes, and resurfaces what you collect — so good ideas don't get buried.</p>
+  </div>
+
+  <!-- Wide card -->
+  <div class="feature-wide">
+    <div>
+      <div class="feature-label">Save anything</div>
+      <h3>Capture life.<br>arlo remembers.</h3>
+      <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. arlo's AI reads the whole thing — pulling out the specific names, steps, tools, and takeaways — and files it automatically.</p>
+      <div class="source-icons">
+        <div class="source-pill">▶ YouTube</div>
+        <div class="source-pill">◈ Instagram</div>
+        <div class="source-pill">♪ TikTok</div>
+        <div class="source-pill">◉ Articles</div>
+        <div class="source-pill">⊞ Screenshots</div>
+      </div>
+    </div>
+    <div class="feature-wide-visual">
+      <div class="phone-card" style="margin:0">
+        <div class="phone-card-platform">
+          <div class="platform-icon platform-yt">▶</div>
+          <span style="font-size:11px;color:var(--ink-3)">YouTube · Just saved</span>
+          <span style="margin-left:auto;font-size:11px;color:var(--sage);font-weight:600">Reading…</span>
+        </div>
+        <div class="phone-card-title">The Feynman Technique for anything</div>
+        <div class="phone-card-summary">Specific steps: pick a concept, explain it simply, identify gaps, simplify further with an analogy.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--accent-soft);border-radius:8px;font-size:12px;color:var(--accent);font-weight:500">
+        <span>✦</span> Extracting key points &amp; tags…
+      </div>
+      <div class="phone-card" style="margin:0;opacity:0.6">
+        <div class="phone-card-title" style="font-size:12px">Atomic Habits summary — James Clear</div>
+        <span class="phone-tag">#habits</span><span class="phone-tag">#productivity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two cards -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <h3>Ask your library anything.</h3>
+      <p>Chat with everything you've saved. arlo answers from your own collection, citing the exact saves it used — inside the app or right inside Claude and ChatGPT.</p>
+      <div class="feature-visual">
+        <div class="mini-bubble user">"What did I save about Photoshop automation?"</div>
+        <div class="mini-bubble">You saved a reel 3 days ago covering JSX batch scripts and the exact Action Manager calls for layer export.</div>
+        <div class="mini-source">
+          <div class="platform-icon platform-ig" style="width:16px;height:16px;font-size:8px;border-radius:4px">◈</div>
+          Photoshop automation — saved 3 days ago
+        </div>
+        <div class="connector-pills">
+          <div class="connector-pill">✦ Claude</div>
+          <div class="connector-pill">⊞ ChatGPT</div>
+        </div>
+      </div>
     </div>
 
-    <div class="hero-badge">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M6 1 L7.1 4.5 L11 4 L8.2 6.6 L9.5 11 L6 8.8 L2.5 11 L3.8 6.6 L1 4 L4.9 4.5 Z" fill="#C94B27"/>
-        </svg>
-        AI Memory that works for you
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+      <h3>Good ideas don't get buried.</h3>
+      <p>A gentle nudge on your phone, or proactively inside Claude and ChatGPT while you work — arlo resurfaces the right save at the right moment, without you having to ask.</p>
+      <div class="feature-visual">
+        <div class="resurface-card">
+          <div class="resurface-icon">🔔</div>
+          <div class="resurface-text">
+            <strong>Remember this?</strong>
+            <span>You saved "Claude MCP connectors" 3 weeks ago — want to build on it?</span>
+          </div>
+        </div>
+        <div class="resurface-card" style="opacity:0.65">
+          <div class="resurface-icon">✦</div>
+          <div class="resurface-text">
+            <strong>By the way…</strong>
+            <span>You saved something about this — "Photoshop layer scripts" from last week.</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <h1>Your second brain<br>for <em>everything</em> that matters</h1>
-
-    <p class="hero-sub">Arlo captures, organizes, and connects the things you save—<br>so you can remember, find, and act on what matters.</p>
-
-    <div class="coming-soon-badge">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M6 1 L7.1 4.5 L11 4 L8.2 6.6 L9.5 11 L6 8.8 L2.5 11 L3.8 6.6 L1 4 L4.9 4.5 Z" fill="#bbb"/>
-        </svg>
-        Coming soon
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg class="trust-item-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div>
+        <strong>Private by default</strong>
+        <p>Your library is yours. Used only to power your own search, chat, and recall.</p>
+      </div>
     </div>
+    <div class="trust-item">
+      <svg class="trust-item-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <div>
+        <strong>Built with care</strong>
+        <p>Thoughtfully designed for curious minds, creators, and doers who collect to think.</p>
+      </div>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-item-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <div>
+        <strong>Made for iOS</strong>
+        <p>Save from any app via the share sheet. Works with Claude and ChatGPT out of the box.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <form class="email-form" onsubmit="return false;">
-        <input type="email" placeholder="Enter your email">
-        <button type="submit">Join the waitlist &nbsp;→</button>
+<!-- FAQ -->
+<section class="faq">
+  <h2>Frequently asked questions</h2>
+  <p>Everything you need to know before joining the list.</p>
+
+  <div class="faq-item open">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>What is arlo?</span>
+      <button class="faq-toggle">+</button>
+    </div>
+    <div class="faq-a">A personal knowledge library for your iPhone. Save any link, video, reel, or screenshot, and arlo's AI reads it, organizes it, and makes it searchable — so the things you save are actually useful later.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>What can I save?</span>
+      <button class="faq-toggle">+</button>
+    </div>
+    <div class="faq-a">YouTube videos, Instagram reels, TikToks, articles, web pages, photos, and screenshots — straight from the iOS share sheet or inside the app. arlo pulls out the specific details automatically.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>How is it different from just bookmarking?</span>
+      <button class="faq-toggle">+</button>
+    </div>
+    <div class="faq-a">Bookmarks pile up and get forgotten. arlo understands what you saved, lets you search by meaning, chat with your library, and resurfaces things at the right moment — without you having to remember to look.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>Does it work with Claude and ChatGPT?</span>
+      <button class="faq-toggle">+</button>
+    </div>
+    <div class="faq-a">Yes — connect arlo once via MCP and your entire library becomes available inside Claude and ChatGPT. Ask a question in your AI chat and it'll quietly check your saves first and surface anything relevant.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>Is my library private?</span>
+      <button class="faq-toggle">+</button>
+    </div>
+    <div class="faq-a">Yes. Your saves are yours — used only to power your own search, chat, and recall. Nothing is shared or used to train models.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>What does early access get me?</span>
+      <button class="faq-toggle">+</button>
+    </div>
+    <div class="faq-a">First access before public launch, direct input into what arlo builds next, and a way to shape the product while it's still early enough to matter.</div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Your saves deserve better.</h2>
+    <p>Join the list. Be first to use arlo when it launches.</p>
+    <form class="cta-band-form" onsubmit="handleSubmit(event, 'cta-form', 'cta-success')">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Join waitlist</button>
     </form>
-
-    <div class="social-proof">
-        <div class="avatar-stack">
-            <div class="av" style="background:#c97a52;">A</div>
-            <div class="av" style="background:#7a8eb5;">B</div>
-            <div class="av" style="background:#6dab8e;">C</div>
-        </div>
-        Join 1,248+ people building their second brain with Arlo ❤
+    <div class="form-success" id="cta-success" style="color:#FFDBCE">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#FFDBCE" stroke-width="2"><path d="M2.5 8l4 4 7-7"/></svg>
+      You're on the list — we'll be in touch soon.
     </div>
+  </div>
 </section>
 
-<!-- ══════════════ FEATURE SECTION ══════════════ -->
-<section class="feature-section">
-    <div class="feature-card-wrap">
-        <div class="feature-card">
-
-            <!-- Left: copy -->
-            <div>
-                <div class="feature-tag">Save Anything</div>
-                <h2>Capture life.<br>Arlo remembers.</h2>
-                <p class="feature-desc">Save notes, links, images, videos, emails, documents, and more.
-                    Arlo instantly organizes and connects everything so it's always there when you need it.</p>
-
-                <div class="source-icons">
-                    <!-- Gmail -->
-                    <div class="si">
-                        <svg width="18" height="18" viewBox="0 0 24 24">
-                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#EA4335"/>
-                        </svg>
-                    </div>
-                    <!-- Link -->
-                    <div class="si">
-                        <svg width="17" height="17" viewBox="0 0 24 24">
-                            <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#666"/>
-                        </svg>
-                    </div>
-                    <!-- Google Docs -->
-                    <div class="si">
-                        <svg width="17" height="17" viewBox="0 0 24 24">
-                            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 9H7v-2h6v2zm4 4H7v-2h10v2zM13 9V3.5L18.5 9H13z" fill="#4285F4"/>
-                        </svg>
-                    </div>
-                    <!-- YouTube -->
-                    <div class="si">
-                        <svg width="18" height="18" viewBox="0 0 24 24">
-                            <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" fill="#FF0000"/>
-                        </svg>
-                    </div>
-                    <!-- X -->
-                    <div class="si">
-                        <svg width="15" height="15" viewBox="0 0 24 24">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.912-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#1a1a1a"/>
-                        </svg>
-                    </div>
-                    <!-- Plus -->
-                    <div class="si" style="font-size:20px; color:#aaa; font-weight:300; line-height:1; padding-top:1px;">+</div>
-                </div>
-
-                <p class="anywhere">From anywhere. Instantly.</p>
-            </div>
-
-            <!-- Right: Phone + Floating cards -->
-            <div class="phone-col">
-                <!-- Phone shell -->
-                <div class="phone-shell">
-                    <div class="p-notch"></div>
-                    <div class="phone-screen">
-                        <!-- Status bar -->
-                        <div class="p-statusbar">
-                            <span class="p-time">9:41</span>
-                            <div class="p-icons">
-                                <svg width="10" height="8" viewBox="0 0 14 10" fill="#1a1a1a">
-                                    <rect x="0" y="4" width="2.5" height="6" rx="0.5"/>
-                                    <rect x="3.5" y="2.5" width="2.5" height="7.5" rx="0.5"/>
-                                    <rect x="7" y="1" width="2.5" height="9" rx="0.5"/>
-                                    <rect x="10.5" y="0" width="2.5" height="10" rx="0.5"/>
-                                </svg>
-                                <svg width="11" height="8" viewBox="0 0 18 12" fill="none">
-                                    <path d="M9 2.5C11.5 2.5 13.7 3.7 15.1 5.5L16.5 4C14.7 1.8 12 0.5 9 0.5C6 0.5 3.3 1.8 1.5 4L2.9 5.5C4.3 3.7 6.5 2.5 9 2.5Z" fill="#1a1a1a"/>
-                                    <path d="M9 5.5C10.5 5.5 11.8 6.2 12.7 7.3L14.1 5.8C12.8 4.4 11 3.5 9 3.5C7 3.5 5.2 4.4 3.9 5.8L5.3 7.3C6.2 6.2 7.5 5.5 9 5.5Z" fill="#1a1a1a"/>
-                                    <circle cx="9" cy="10" r="1.5" fill="#1a1a1a"/>
-                                </svg>
-                                <svg width="18" height="8" viewBox="0 0 22 10" fill="none">
-                                    <rect x="0.5" y="0.5" width="18" height="9" rx="2.5" stroke="#1a1a1a" stroke-opacity="0.35"/>
-                                    <rect x="19.5" y="3" width="2" height="4" rx="1" fill="#1a1a1a" fill-opacity="0.4"/>
-                                    <rect x="1.5" y="1.5" width="14" height="7" rx="1.5" fill="#1a1a1a"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <!-- App body -->
-                        <div class="p-body">
-                            <div class="p-header-row">
-                                <div>
-                                    <div class="p-greeting">Good morning, Alex</div>
-                                    <div class="p-greeting-sub">Here's what you've saved recently</div>
-                                </div>
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                                    <circle cx="11" cy="11" r="7.5" stroke="#444" stroke-width="2.3"/>
-                                    <path d="M21 21l-3.8-3.8" stroke="#444" stroke-width="2.3" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                            <div class="p-tabs">
-                                <div class="p-tab active">All 34</div>
-                                <div class="p-tab">Notes 8</div>
-                                <div class="p-tab">Articles 6</div>
-                                <div class="p-tab">Images 6</div>
-                                <div class="p-tab">Videos 3</div>
-                            </div>
-                            <div class="p-section">Pinned</div>
-                            <div class="p-pinned">
-                                <div class="p-pin-card" style="background:linear-gradient(145deg,#7ecde5,#4daac8);">
-                                    <div class="p-pin-label">Weekend in Tulum<br><span class="p-pin-meta">Notes · 24 ago</span></div>
-                                </div>
-                                <div class="p-pin-card" style="background:linear-gradient(145deg,#e8e0d5,#d4c8b4);">
-                                    <div class="p-pin-label">Brand inspiration<br><span class="p-pin-meta">16 Items</span></div>
-                                </div>
-                                <div class="p-pin-card" style="background:linear-gradient(145deg,#dce5f0,#c5d2e5);">
-                                    <div class="p-pin-label">The Science of Focus<br><span class="p-pin-meta">Article · 30 ago</span></div>
-                                </div>
-                            </div>
-                            <div class="p-section">Recent</div>
-                            <div class="p-recent-item">
-                                <div class="p-item-thumb" style="background:#dce5f5;"></div>
-                                <div style="flex:1;min-width:0;">
-                                    <div class="p-item-title">Design inspiration for new landing page</div>
-                                    <div class="p-item-meta">Images · 1h ago</div>
-                                </div>
-                                <svg width="6" height="10" viewBox="0 0 8 14" fill="none"><path d="M1 1l6 6-6 6" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </div>
-                            <div class="p-recent-item" style="border-bottom:none;">
-                                <div class="p-item-thumb" style="background:#fde8e8;"></div>
-                                <div>
-                                    <div class="p-item-title">Q2 Strategy Deck</div>
-                                    <div class="p-item-meta">PDF · 4.3 MB</div>
-                                </div>
-                            </div>
-                            <div class="p-fab">
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 5v14M5 12h14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Floating cards -->
-                <div class="fcards">
-                    <!-- YouTube -->
-                    <div class="fcard">
-                        <div class="fcard-row">
-                            <div class="fcard-icon" style="background:#FF0000;">
-                                <svg width="14" height="10" viewBox="0 0 20 14" fill="none">
-                                    <path d="M8 3.5v7l6.5-3.5L8 3.5z" fill="white"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="fcard-type">YouTube video</div>
-                                <div class="fcard-title">How to build a habit</div>
-                                <div class="fcard-url">youtube.com</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Article / Medium -->
-                    <div class="fcard">
-                        <div class="fcard-row">
-                            <div class="fcard-icon" style="background:#000; color:white; font-size:13px; font-weight:700; font-family:Georgia,serif; letter-spacing:-0.5px;">M</div>
-                            <div>
-                                <div class="fcard-type">Article</div>
-                                <div class="fcard-title">The Science of Focus</div>
-                                <div class="fcard-url">medium.com</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PDF with Saved badge -->
-                    <div class="fcard">
-                        <div class="fcard-row">
-                            <div class="fcard-icon" style="background:#f87272;">
-                                <svg width="13" height="14" viewBox="0 0 24 24" fill="none">
-                                    <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 9H9v-2h6v2zm2 4H9v-2h8v2zM13 9V3.5L18.5 9H13z" fill="white"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="fcard-type">PDF</div>
-                                <div class="fcard-title">Q2 Strategy Deck</div>
-                                <div class="fcard-url">pdf · 4.2 MB</div>
-                            </div>
-                        </div>
-                        <div class="saved-row">
-                            <span class="saved-lbl">
-                                <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                                    <path d="M6 1 L7.1 4.5 L11 4 L8.2 6.6 L9.5 11 L6 8.8 L2.5 11 L3.8 6.6 L1 4 L4.9 4.5 Z" fill="#C94B27"/>
-                                </svg>
-                                Saved to Arlo
-                            </span>
-                            <div class="saved-check">
-                                <svg width="10" height="8" viewBox="0 0 14 11" fill="none">
-                                    <path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Three feature pills below the card -->
-        <div class="feat-row">
-            <div class="feat-item">
-                <div class="feat-icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="9" stroke="#555" stroke-width="1.5"/>
-                        <path d="M9 9a3 3 0 0 1 6 0c0 2-3 3-3 3" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
-                        <circle cx="12" cy="16" r="0.8" fill="#555"/>
-                    </svg>
-                </div>
-                <div>
-                    <h3>AI that understands you</h3>
-                    <p>Arlo connects ideas, extracts insights, and helps you find what you need—fast.</p>
-                </div>
-            </div>
-            <div class="feat-item">
-                <div class="feat-icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
-                        <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
-                        <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
-                        <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" stroke="#555" stroke-width="1.5"/>
-                    </svg>
-                </div>
-                <div>
-                    <h3>Everything in one place</h3>
-                    <p>No more tabs, screenshots, or scattered notes. Your digital world, organized.</p>
-                </div>
-            </div>
-            <div class="feat-item">
-                <div class="feat-icon-box">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2.5 L13.7 8.5 L20 8 L15 12 L17 18.5 L12 15 L7 18.5 L9 12 L4 8 L10.3 8.5 Z"
-                              stroke="#555" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div>
-                    <h3>Take action, effortlessly</h3>
-                    <p>Turn saved ideas into tasks, projects, and progress with Arlo by your side.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ══════════════ SURVEY SECTION ══════════════ -->
-<section class="survey-section">
-    <div class="survey-inner">
-        <!-- Left -->
-        <div class="survey-left">
-            <h2>Help us build Arlo for you</h2>
-            <p class="survey-blurb">Your input helps us create a second brain that fits your life perfectly.
-                It only takes 30 seconds.</p>
-
-            <div class="s-steps">
-                <div class="s-step">
-                    <div class="s-num active">1</div>
-                    <span class="s-label">What best describes you?</span>
-                </div>
-                <div class="s-step">
-                    <div class="s-num inactive">2</div>
-                    <span class="s-label inactive">What do you struggle with most?</span>
-                </div>
-                <div class="s-step">
-                    <div class="s-num inactive">3</div>
-                    <span class="s-label inactive">What would you love Arlo to help you do?</span>
-                </div>
-                <div class="s-step">
-                    <div class="s-num inactive">4</div>
-                    <span class="s-label inactive">Almost there!</span>
-                </div>
-            </div>
-
-            <div class="s-privacy">
-                <svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px;">
-                    <path d="M12 2L4 5v6.5c0 5.25 3.4 10.15 8 11.5 4.6-1.35 8-6.25 8-11.5V5l-8-3z" fill="#ddd"/>
-                </svg>
-                <span>Your responses are private and help shape a better Arlo.</span>
-            </div>
-        </div>
-
-        <!-- Right: Survey card -->
-        <div class="survey-card">
-            <span class="emoji-deco" id="surveyEmoji">🌍</span>
-            <div id="surveyBody">
-                <h3 id="surveyTitle">What best describes you?</h3>
-                <div class="select-all" id="surveySub">Select all that apply.</div>
-                <div id="surveyOptions"></div>
-            </div>
-            <button class="next-btn" id="surveyNext" onclick="surveyNext()">Next &nbsp;→</button>
-        </div>
-    </div>
-</section>
-
-<!-- ══════════════ FOOTER VALUES ══════════════ -->
-<div class="footer-vals">
-    <div class="fv-inner">
-        <div class="fv-item">
-            <div class="fv-icon-box">🔒</div>
-            <div>
-                <div class="fv-title">Private by default</div>
-                <div class="fv-text">Your data is encrypted and always in your control.</div>
-            </div>
-        </div>
-        <div class="fv-item">
-            <div class="fv-icon-box">⚡</div>
-            <div>
-                <div class="fv-title">Built with care</div>
-                <div class="fv-text">Thoughtfully designed to help you think, create, and grow.</div>
-            </div>
-        </div>
-        <div class="fv-item">
-            <div class="fv-icon-box">❤️</div>
-            <div>
-                <div class="fv-title">By people who get it</div>
-                <div class="fv-text">Made for curious minds, creators, and doers like you.</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ══════════════ SITE FOOTER ══════════════ -->
-<footer class="site-footer">
-    <p>© 2024 Arlo. All rights reserved. &nbsp;&nbsp;
-        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
-    </p>
+<!-- FOOTER -->
+<footer>
+  <span class="wordmark">arlo</span>
+  <p>© 2026 arlo. All rights reserved.</p>
+  <nav>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="mailto:hello@getarlo.com">Contact</a>
+  </nav>
 </footer>
 
 <script>
-    /* ── "Help us build Arlo for you" — multi-step survey ── */
-    const surveySteps = [
-        {
-            emoji: "🌍",
-            title: "What best describes you?",
-            sub: "Select all that apply.",
-            options: [["🎓", "Student"], ["💼", "Professional"], ["✏️", "Creator / Writer"], ["🚀", "Entrepreneur / Founder"], ["💭", "Other"]],
-        },
-        {
-            emoji: "🧠",
-            title: "What do you struggle with most?",
-            sub: "Select all that apply.",
-            options: [["🗂️", "Scattered notes everywhere"], ["🔍", "Finding things later"], ["⏰", "Following through on ideas"], ["📚", "Information overload"]],
-        },
-        {
-            emoji: "✨",
-            title: "What would you love Arlo to help you do?",
-            sub: "Select all that apply.",
-            options: [["🔗", "Connect my ideas"], ["✅", "Turn notes into tasks"], ["💡", "Surface forgotten insights"], ["📈", "Stay on top of projects"]],
-        },
-        {
-            emoji: "🎉",
-            title: "Almost there!",
-            sub: "How did you hear about Arlo?",
-            options: [["🐦", "Social media"], ["👋", "A friend"], ["🔎", "Search"], ["📰", "A newsletter"]],
-        },
-    ];
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
 
-    const checkSvg = '<svg width="11" height="9" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function handleSubmit(e, formId, successId) {
+    e.preventDefault();
+    const form = document.getElementById(formId) || e.target;
+    const success = document.getElementById(successId);
+    const email = e.target.querySelector('input[type=email]').value;
 
-    let surveyCurrent = 0;
-    const surveySelections = surveySteps.map(() => new Set());
+    // Replace this fetch with your actual waitlist endpoint
+    // e.g. Mailchimp, Resend, Loops, or a simple POST to your backend
+    console.log('Waitlist signup:', email);
 
-    function toggleOption(idx) {
-        const set = surveySelections[surveyCurrent];
-        set.has(idx) ? set.delete(idx) : set.add(idx);
-        renderSurveyOptions();
-    }
-
-    function renderSurveyOptions() {
-        const step = surveySteps[surveyCurrent];
-        const set = surveySelections[surveyCurrent];
-        document.getElementById("surveyOptions").innerHTML = step.options
-            .map((opt, i) => {
-                const checked = set.has(i);
-                return (
-                    '<div class="q-option" onclick="toggleOption(' + i + ')">' +
-                        '<div class="q-label"><div class="q-icon">' + opt[0] + '</div> ' + opt[1] + '</div>' +
-                        '<div class="q-check' + (checked ? ' checked' : '') + '">' + (checked ? checkSvg : '') + '</div>' +
-                    '</div>'
-                );
-            })
-            .join("");
-    }
-
-    function renderSurveyRail() {
-        const stepEls = document.querySelectorAll(".s-steps .s-step");
-        stepEls.forEach((el, i) => {
-            const num = el.querySelector(".s-num");
-            const label = el.querySelector(".s-label");
-            const completed = i < surveyCurrent;
-            const active = i === surveyCurrent;
-            num.className = "s-num" + (completed || active ? " active" : " inactive");
-            num.innerHTML = completed ? "✓" : String(i + 1);
-            label.className = "s-label" + (completed || active ? "" : " inactive");
-        });
-    }
-
-    function renderSurvey() {
-        const step = surveySteps[surveyCurrent];
-        document.getElementById("surveyEmoji").textContent = step.emoji;
-        document.getElementById("surveyTitle").textContent = step.title;
-        document.getElementById("surveySub").textContent = step.sub;
-        document.getElementById("surveyNext").innerHTML =
-            (surveyCurrent === surveySteps.length - 1 ? "Finish" : "Next") + " &nbsp;→";
-        renderSurveyOptions();
-        renderSurveyRail();
-    }
-
-    function surveyNext() {
-        if (surveyCurrent < surveySteps.length - 1) {
-            surveyCurrent++;
-            renderSurvey();
-        } else {
-            showSurveyDone();
-        }
-    }
-
-    function showSurveyDone() {
-        document.getElementById("surveyEmoji").textContent = "🎉";
-        document.getElementById("surveyBody").innerHTML =
-            '<div style="padding:26px 0;text-align:center;">' +
-                '<div style="font-size:46px;margin-bottom:14px;">🎉</div>' +
-                '<h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">Thank you!</h3>' +
-                '<p style="font-size:14px;color:#777;line-height:1.6;">Your answers help us build a better Arlo. We&rsquo;ll be in touch soon.</p>' +
-            '</div>';
-        const next = document.getElementById("surveyNext");
-        next.style.display = "none";
-        // mark every step complete
-        document.querySelectorAll(".s-steps .s-step").forEach((el) => {
-            el.querySelector(".s-num").className = "s-num active";
-            el.querySelector(".s-num").innerHTML = "✓";
-            el.querySelector(".s-label").className = "s-label";
-        });
-    }
-
-    renderSurvey();
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'flex';
+  }
 </script>
 
 </body>
