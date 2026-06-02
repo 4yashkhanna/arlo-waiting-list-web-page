@@ -8,11 +8,11 @@ const reveal = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-function FloatingCard({ children, delay = 0 }) {
+function SavedCard({ children, delay = 0 }) {
   return (
     <motion.div
-      className="glass-strong rounded-[13px] px-[13px] py-[11px] min-w-[162px]"
-      animate={{ y: [0, -7, 0] }}
+      className="rounded-[13px] px-[13px] py-[11px] bg-white/70 border border-white/70 shadow-[0_6px_20px_rgba(60,40,25,0.08)]"
+      animate={{ y: [0, -5, 0] }}
       transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay }}
       whileHover={{ scale: 1.03 }}
     >
@@ -22,15 +22,10 @@ function FloatingCard({ children, delay = 0 }) {
 }
 
 const sourceIcons = [
-  // Gmail
   <svg key="gmail" width="18" height="18" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#EA4335" /></svg>,
-  // Link
   <svg key="link" width="17" height="17" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#666" /></svg>,
-  // Docs
   <svg key="docs" width="17" height="17" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 9H7v-2h6v2zm4 4H7v-2h10v2zM13 9V3.5L18.5 9H13z" fill="#4285F4" /></svg>,
-  // YouTube
   <svg key="yt" width="18" height="18" viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" fill="#FF0000" /></svg>,
-  // X
   <svg key="x" width="15" height="15" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.912-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#1a1a1a" /></svg>,
 ];
 
@@ -72,42 +67,57 @@ const features = [
 export default function FeatureSection() {
   return (
     <section className="px-6 pt-16 pb-12">
-      <div className="max-w-[1040px] mx-auto">
+      <div className="max-w-[1080px] mx-auto">
+        {/* ── Bento row: copy box · popping phone · saved-cards box ── */}
         <motion.div
           variants={reveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="glass-strong rounded-[28px] p-[52px] grid grid-cols-1 md:grid-cols-2 gap-11"
+          className="flex flex-col lg:flex-row items-stretch justify-center gap-5 lg:gap-0"
         >
-          {/* Left copy */}
-          <div>
+          {/* Left box — capture copy */}
+          <div className="glass-strong rounded-[26px] p-8 lg:p-10 flex-1 lg:max-w-[360px] flex flex-col justify-center lg:mr-[-28px] lg:py-14">
             <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-arlo mb-3.5">Save Anything</div>
-            <h2 className="font-serif text-[36px] font-bold leading-[1.1] mb-4">
+            <h2 className="font-serif text-[32px] font-bold leading-[1.08] mb-4">
               Capture life.
               <br />
               Arlo remembers.
             </h2>
-            <p className="text-sm text-neutral-500 leading-[1.7] mb-7">
-              Save notes, links, images, videos, emails, documents, and more. Arlo instantly organizes and connects
-              everything so it&apos;s always there when you need it.
+            <p className="text-sm text-neutral-500 leading-[1.7] mb-6">
+              Save notes, links, images, videos, emails, documents, and more. Arlo instantly organizes everything so
+              it&apos;s always there when you need it.
             </p>
-            <div className="flex items-center gap-2 mb-3.5">
+            <div className="flex items-center gap-2 mb-3.5 flex-wrap">
               {sourceIcons.map((ic, i) => (
-                <div key={i} className="w-[34px] h-[34px] rounded-[9px] bg-white/55 border border-white/60 flex items-center justify-center shrink-0">
+                <div key={i} className="w-[34px] h-[34px] rounded-[9px] bg-white/65 border border-white/70 flex items-center justify-center shrink-0">
                   {ic}
                 </div>
               ))}
-              <div className="w-[34px] h-[34px] rounded-[9px] bg-white/55 border border-white/60 flex items-center justify-center text-xl text-neutral-400 font-light">+</div>
+              <div className="w-[34px] h-[34px] rounded-[9px] bg-white/65 border border-white/70 flex items-center justify-center text-xl text-neutral-400 font-light">+</div>
             </div>
             <p className="text-[13px] text-neutral-400 italic">From anywhere. Instantly.</p>
           </div>
 
-          {/* Right: phone + floating cards */}
-          <div className="flex items-start gap-3.5 justify-center md:justify-start">
-            <PhoneMockup />
-            <div className="flex flex-col gap-2.5 pt-[18px]">
-              <FloatingCard delay={0}>
+          {/* Center — phone popping out between the boxes */}
+          <motion.div
+            className="relative z-30 flex justify-center items-center shrink-0 my-[-10px] lg:my-0"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="lg:scale-[1.12] origin-center drop-shadow-[0_30px_50px_rgba(40,25,15,0.28)]">
+              <PhoneMockup />
+            </div>
+          </motion.div>
+
+          {/* Right box — saved cards */}
+          <div className="glass-strong rounded-[26px] p-8 lg:p-10 flex-1 lg:max-w-[360px] flex flex-col justify-center lg:ml-[-28px] lg:py-14">
+            <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-arlo mb-1.5">Saved automatically</div>
+            <p className="text-[13px] text-neutral-500 leading-[1.6] mb-5">
+              Whatever you send, Arlo files it neatly—ready the moment you need it.
+            </p>
+            <div className="flex flex-col gap-3">
+              <SavedCard delay={0}>
                 <div className="flex items-start gap-2.5">
                   <div className="w-[26px] h-[26px] rounded-[7px] bg-[#FF0000] flex items-center justify-center shrink-0">
                     <svg width="14" height="10" viewBox="0 0 20 14" fill="none"><path d="M8 3.5v7l6.5-3.5L8 3.5z" fill="white" /></svg>
@@ -118,9 +128,9 @@ export default function FeatureSection() {
                     <div className="text-[9px] text-neutral-300 mt-0.5">youtube.com</div>
                   </div>
                 </div>
-              </FloatingCard>
+              </SavedCard>
 
-              <FloatingCard delay={1.4}>
+              <SavedCard delay={1.4}>
                 <div className="flex items-start gap-2.5">
                   <div className="w-[26px] h-[26px] rounded-[7px] bg-black text-white flex items-center justify-center font-bold text-[13px] font-serif">M</div>
                   <div>
@@ -129,9 +139,9 @@ export default function FeatureSection() {
                     <div className="text-[9px] text-neutral-300 mt-0.5">medium.com</div>
                   </div>
                 </div>
-              </FloatingCard>
+              </SavedCard>
 
-              <FloatingCard delay={2.6}>
+              <SavedCard delay={2.6}>
                 <div className="flex items-start gap-2.5">
                   <div className="w-[26px] h-[26px] rounded-[7px] bg-[#f87272] flex items-center justify-center shrink-0">
                     <svg width="13" height="14" viewBox="0 0 24 24" fill="none"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 9H9v-2h6v2zm2 4H9v-2h8v2zM13 9V3.5L18.5 9H13z" fill="white" /></svg>
@@ -151,7 +161,7 @@ export default function FeatureSection() {
                     <svg width="10" height="8" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </div>
                 </div>
-              </FloatingCard>
+              </SavedCard>
             </div>
           </div>
         </motion.div>

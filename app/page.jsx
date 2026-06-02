@@ -1,6 +1,8 @@
 import Hero from "../components/Hero";
 import FeatureSection from "../components/FeatureSection";
+import AskLibrary from "../components/AskLibrary";
 import SurveySection from "../components/SurveySection";
+import FAQ from "../components/FAQ";
 import FooterValues from "../components/FooterValues";
 
 export default function Home() {
@@ -8,7 +10,9 @@ export default function Home() {
     <main>
       <Hero />
       <FeatureSection />
+      <AskLibrary />
       <SurveySection />
+      <FAQ />
       <FooterValues />
       <footer className="border-t border-black/5 py-5 px-6 text-center">
         <p className="text-[12.5px] text-neutral-400">
