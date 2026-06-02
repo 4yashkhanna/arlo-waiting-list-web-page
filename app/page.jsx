@@ -11,9 +11,9 @@ export default function Home() {
       <Hero />
       <FeatureSection />
       <AskLibrary />
+      <FooterValues />
       <SurveySection />
       <FAQ />
-      <FooterValues />
       <footer className="border-t border-black/5 py-5 px-6 text-center">
         <p className="text-[12.5px] text-neutral-400">
           © 2024 Arlo. All rights reserved. &nbsp;&nbsp;

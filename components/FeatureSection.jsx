@@ -8,11 +8,11 @@ const reveal = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-function SavedCard({ children, delay = 0 }) {
+function FloatingCard({ children, delay = 0 }) {
   return (
     <motion.div
-      className="rounded-[13px] px-[13px] py-[11px] bg-white/70 border border-white/70 shadow-[0_6px_20px_rgba(60,40,25,0.08)]"
-      animate={{ y: [0, -5, 0] }}
+      className="rounded-[13px] px-[13px] py-[11px] bg-white/75 border border-white/70 shadow-[0_8px_26px_rgba(60,40,25,0.12)] min-w-[164px]"
+      animate={{ y: [0, -6, 0] }}
       transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay }}
       whileHover={{ scale: 1.03 }}
     >
@@ -67,57 +67,50 @@ const features = [
 export default function FeatureSection() {
   return (
     <section className="px-6 pt-16 pb-12">
-      <div className="max-w-[1080px] mx-auto">
-        {/* ── Bento row: copy box · popping phone · saved-cards box ── */}
+      <div className="max-w-[1040px] mx-auto">
+        {/* ── Main glass card: copy (left) · phone + cards (right) ── */}
         <motion.div
           variants={reveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="flex flex-col lg:flex-row items-stretch justify-center gap-5 lg:gap-0"
+          className="glass-strong rounded-[28px] p-8 md:p-[52px] grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-11 items-center"
         >
-          {/* Left box — capture copy */}
-          <div className="glass-strong rounded-[26px] p-8 lg:p-10 flex-1 lg:max-w-[360px] flex flex-col justify-center lg:mr-[-28px] lg:py-14">
+          {/* Left copy */}
+          <div>
             <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-arlo mb-3.5">Save Anything</div>
-            <h2 className="font-serif text-[32px] font-bold leading-[1.08] mb-4">
+            <h2 className="font-serif text-[36px] font-bold leading-[1.1] mb-4">
               Capture life.
               <br />
               Arlo remembers.
             </h2>
-            <p className="text-sm text-neutral-500 leading-[1.7] mb-6">
-              Save notes, links, images, videos, emails, documents, and more. Arlo instantly organizes everything so
-              it&apos;s always there when you need it.
+            <p className="text-sm text-neutral-500 leading-[1.7] mb-7">
+              Save notes, links, images, videos, emails, documents, and more. Arlo instantly organizes and connects
+              everything so it&apos;s always there when you need it.
             </p>
-            <div className="flex items-center gap-2 mb-3.5 flex-wrap">
+            <div className="flex items-center gap-2 mb-3.5">
               {sourceIcons.map((ic, i) => (
-                <div key={i} className="w-[34px] h-[34px] rounded-[9px] bg-white/65 border border-white/70 flex items-center justify-center shrink-0">
+                <div key={i} className="w-[34px] h-[34px] rounded-[9px] bg-white/55 border border-white/60 flex items-center justify-center shrink-0">
                   {ic}
                 </div>
               ))}
-              <div className="w-[34px] h-[34px] rounded-[9px] bg-white/65 border border-white/70 flex items-center justify-center text-xl text-neutral-400 font-light">+</div>
+              <div className="w-[34px] h-[34px] rounded-[9px] bg-white/55 border border-white/60 flex items-center justify-center text-xl text-neutral-400 font-light">+</div>
             </div>
             <p className="text-[13px] text-neutral-400 italic">From anywhere. Instantly.</p>
           </div>
 
-          {/* Center — phone popping out between the boxes */}
-          <motion.div
-            className="relative z-30 flex justify-center items-center shrink-0 my-[-10px] lg:my-0"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="lg:scale-[1.12] origin-center drop-shadow-[0_30px_50px_rgba(40,25,15,0.28)]">
+          {/* Right: phone + floating cards */}
+          <div className="flex items-center justify-center gap-4">
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+              className="drop-shadow-[0_24px_44px_rgba(40,25,15,0.24)] shrink-0"
+            >
               <PhoneMockup />
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Right box — saved cards */}
-          <div className="glass-strong rounded-[26px] p-8 lg:p-10 flex-1 lg:max-w-[360px] flex flex-col justify-center lg:ml-[-28px] lg:py-14">
-            <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-arlo mb-1.5">Saved automatically</div>
-            <p className="text-[13px] text-neutral-500 leading-[1.6] mb-5">
-              Whatever you send, Arlo files it neatly—ready the moment you need it.
-            </p>
-            <div className="flex flex-col gap-3">
-              <SavedCard delay={0}>
+            <div className="flex flex-col gap-2.5">
+              <FloatingCard delay={0}>
                 <div className="flex items-start gap-2.5">
                   <div className="w-[26px] h-[26px] rounded-[7px] bg-[#FF0000] flex items-center justify-center shrink-0">
                     <svg width="14" height="10" viewBox="0 0 20 14" fill="none"><path d="M8 3.5v7l6.5-3.5L8 3.5z" fill="white" /></svg>
@@ -128,9 +121,9 @@ export default function FeatureSection() {
                     <div className="text-[9px] text-neutral-300 mt-0.5">youtube.com</div>
                   </div>
                 </div>
-              </SavedCard>
+              </FloatingCard>
 
-              <SavedCard delay={1.4}>
+              <FloatingCard delay={1.4}>
                 <div className="flex items-start gap-2.5">
                   <div className="w-[26px] h-[26px] rounded-[7px] bg-black text-white flex items-center justify-center font-bold text-[13px] font-serif">M</div>
                   <div>
@@ -139,9 +132,9 @@ export default function FeatureSection() {
                     <div className="text-[9px] text-neutral-300 mt-0.5">medium.com</div>
                   </div>
                 </div>
-              </SavedCard>
+              </FloatingCard>
 
-              <SavedCard delay={2.6}>
+              <FloatingCard delay={2.6}>
                 <div className="flex items-start gap-2.5">
                   <div className="w-[26px] h-[26px] rounded-[7px] bg-[#f87272] flex items-center justify-center shrink-0">
                     <svg width="13" height="14" viewBox="0 0 24 24" fill="none"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 9H9v-2h6v2zm2 4H9v-2h8v2zM13 9V3.5L18.5 9H13z" fill="white" /></svg>
@@ -161,7 +154,7 @@ export default function FeatureSection() {
                     <svg width="10" height="8" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                   </div>
                 </div>
-              </SavedCard>
+              </FloatingCard>
             </div>
           </div>
         </motion.div>
