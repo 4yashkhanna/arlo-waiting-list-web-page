@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>arlo · Your personal knowledge library</title>
-  <meta name="description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it, inside your favourite AI tools." />
-  <meta property="og:title" content="arlo · Your personal knowledge library" />
-  <meta property="og:description" content="Save anything. arlo reads it, organizes it, and resurfaces it when you need it." />
+  <title>Arlo · Your personal knowledge library</title>
+  <meta name="description" content="Save anything. Arlo reads it, organizes it, and resurfaces it when you need it, inside your favourite AI tools." />
+  <meta property="og:title" content="Arlo · Your personal knowledge library" />
+  <meta property="og:description" content="Save anything. Arlo reads it, organizes it, and resurfaces it when you need it." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -94,7 +94,7 @@
     .hero {
       text-align: center;
       padding: 60px 24px 0;
-      max-width: 720px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
@@ -106,8 +106,8 @@
       font-weight: 600;
       letter-spacing: 1.2px;
       text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-soft);
+      color: var(--sage);
+      background: var(--sage-bg);
       padding: 6px 14px;
       border-radius: 50px;
       margin-bottom: 28px;
@@ -116,12 +116,13 @@
 
     .hero h1 {
       font-family: 'Lora', serif;
-      font-size: clamp(38px, 7vw, 68px);
+      font-size: clamp(38px, 6.2vw, 56px);
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1.12;
       letter-spacing: -1.5px;
       color: var(--ink);
       margin-bottom: 22px;
+      text-wrap: balance;
     }
 
     .hero h1 em {
@@ -541,8 +542,8 @@
       padding-bottom: 22px;
     }
     .feature-wide-phone .float-card { z-index: 20; }
-    .feature-wide-phone .float-card.notif  { left: -42px; top: 7%; }
-    .feature-wide-phone .float-card.ai-chip { right: -42px; bottom: 9%; top: auto; }
+    .feature-wide-phone .float-card.notif  { top: -22px; left: -30px; bottom: auto; }
+    .feature-wide-phone .float-card.ai-chip { bottom: -18px; right: -30px; top: auto; }
 
     /* two small cards */
     .feature-grid {
@@ -877,7 +878,7 @@
     }
     .cta-band-form button:hover { opacity: 0.9; }
 
-    /* ── SURVEY (Help us build arlo) ─────────────────── */
+    /* ── SURVEY (Help us build Arlo) ─────────────────── */
     .survey {
       max-width: 1060px;
       margin: 0 auto 80px;
@@ -1161,7 +1162,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-wordmark" href="#">arlo</a>
+  <a class="nav-wordmark" href="#">Arlo</a>
 </nav>
 
 <!-- HERO -->
@@ -1173,9 +1174,9 @@
     AI memory that works for you
   </div>
 
-  <h1>Your second brain<br>for <em>everything</em> that&nbsp;matters</h1>
+  <h1>Your second brain for<br><em>everything</em> that&nbsp;matters</h1>
 
-  <p>arlo captures, reads, and organizes the things you save, so you can find, remember, and act on what matters.</p>
+  <p>Arlo captures, reads, and organizes the things you save, so you can find, remember, and act on what matters.</p>
 
   <form class="email-form" id="hero-form" onsubmit="handleSubmit(event, 'hero-form', 'hero-success')">
     <input type="email" placeholder="Enter your email" required />
@@ -1206,42 +1207,10 @@
     <div>
       <div class="feature-label">Save anything</div>
       <h3>Everything you save,<br>finally&nbsp;useful</h3>
-      <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. arlo's AI reads the whole thing, pulling out the specific names, steps, tools, and takeaways, and files it automatically.</p>
-      <div class="source-icons">
-        <div class="source-pill">
-          <span class="src-icon platform-yt">
-            <svg viewBox="0 0 24 24" fill="#fff"><path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8zM10 15.2V8.8l5.2 3.2z"/></svg>
-          </span>
-          YouTube
-        </div>
-        <div class="source-pill">
-          <span class="src-icon platform-ig">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff" stroke="none"/></svg>
-          </span>
-          Instagram
-        </div>
-        <div class="source-pill">
-          <span class="src-icon platform-art">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M9 9h5M9 13h6M9 17h4"/></svg>
-          </span>
-          Articles
-        </div>
-        <div class="source-pill">
-          <span class="src-icon platform-cam">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h3l1.5-2h9L18 8.5h3v11H3z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
-          </span>
-          Camera
-        </div>
-        <div class="source-pill">
-          <span class="src-icon platform-shot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V6a2 2 0 0 1 2-2h3M20 9V6a2 2 0 0 0-2-2h-3M4 15v3a2 2 0 0 0 2 2h3M20 15v3a2 2 0 0 0-2 2h-3"/></svg>
-          </span>
-          Screenshots
-        </div>
-      </div>
+      <p>Drop in a link, video, reel, article, or screenshot from the share sheet or the app. Arlo's AI reads the whole thing, pulling out the specific names, steps, tools, and takeaways, and files it automatically.</p>
     </div>
 
-    <!-- Phone: arlo reading a save in real time -->
+    <!-- Phone: Arlo reading a save in real time -->
     <div class="feature-wide-phone">
       <div class="phone-wrap">
         <div class="float-card notif">
@@ -1262,7 +1231,7 @@
           <div class="phone-screen">
             <div class="phone-notch"></div>
             <div class="phone-ui">
-              <div class="phone-header">arlo</div>
+              <div class="phone-header">Arlo</div>
 
               <div class="phone-card">
                 <div class="phone-card-platform">
@@ -1301,7 +1270,7 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </div>
       <h3>Ask your library&nbsp;anything.</h3>
-      <p>Chat with everything you've saved. arlo answers from your own collection, citing the exact saves it used, inside the app or right inside Claude and ChatGPT.</p>
+      <p>Chat with everything you've saved. Arlo answers from your own collection, citing the exact saves it used, inside the app or right inside Claude and ChatGPT.</p>
       <div class="feature-visual">
         <div class="mini-bubble user">"What did I save about Photoshop automation?"</div>
         <div class="mini-bubble">You saved a reel 3 days ago covering JSX batch scripts and the exact Action Manager calls for layer export.</div>
@@ -1321,7 +1290,7 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
       </div>
       <h3>Good ideas don't get&nbsp;buried.</h3>
-      <p>A gentle nudge on your phone, or proactively inside Claude and ChatGPT while you work, arlo resurfaces the right save at the right moment, without you having to ask.</p>
+      <p>A gentle nudge on your phone, or proactively inside Claude and ChatGPT while you work, Arlo resurfaces the right save at the right moment, without you having to ask.</p>
       <div class="feature-visual">
         <div class="resurface-card">
           <div class="resurface-icon">🔔</div>
@@ -1369,24 +1338,24 @@
   </div>
 </section>
 
-<!-- SURVEY: Help us build arlo -->
+<!-- SURVEY: Help us build Arlo -->
 <section class="survey">
   <div class="survey-inner">
     <div class="survey-intro">
-      <div class="feature-label">Shape arlo</div>
-      <h2>Help us build arlo for&nbsp;you</h2>
+      <div class="feature-label">Shape Arlo</div>
+      <h2>Help us build Arlo for&nbsp;you</h2>
       <p>Your input helps us create a second brain that fits your life perfectly. It only takes 30 seconds.</p>
 
       <div class="survey-steps">
         <div class="survey-step active"><span class="survey-step-num">1</span> What best describes you?</div>
         <div class="survey-step"><span class="survey-step-num">2</span> What do you struggle with most?</div>
-        <div class="survey-step"><span class="survey-step-num">3</span> What would you love arlo to help you do?</div>
+        <div class="survey-step"><span class="survey-step-num">3</span> What would you love Arlo to help you do?</div>
         <div class="survey-step"><span class="survey-step-num">4</span> Almost there!</div>
       </div>
 
       <div class="survey-privacy">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Your responses are private and help shape a better arlo.
+        Your responses are private and help shape a better Arlo.
       </div>
     </div>
 
@@ -1416,10 +1385,10 @@
 
   <div class="faq-item open">
     <div class="faq-q" onclick="toggleFaq(this)">
-      <span>What is arlo?</span>
+      <span>What is Arlo?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">A personal knowledge library for your iPhone. Save any link, video, reel, or screenshot, and arlo's AI reads it, organizes it, and makes it searchable, so the things you save are actually useful later.</div>
+    <div class="faq-a">A personal knowledge library for your iPhone. Save any link, video, reel, or screenshot, and Arlo's AI reads it, organizes it, and makes it searchable, so the things you save are actually useful later.</div>
   </div>
 
   <div class="faq-item">
@@ -1427,7 +1396,7 @@
       <span>What can I save?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">YouTube videos, Instagram reels, TikToks, articles, web pages, photos, and screenshots, straight from the iOS share sheet or inside the app. arlo pulls out the specific details automatically.</div>
+    <div class="faq-a">YouTube videos, Instagram reels, TikToks, articles, web pages, photos, and screenshots, straight from the iOS share sheet or inside the app. Arlo pulls out the specific details automatically.</div>
   </div>
 
   <div class="faq-item">
@@ -1435,7 +1404,7 @@
       <span>How is it different from just bookmarking?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">Bookmarks pile up and get forgotten. arlo understands what you saved, lets you search by meaning, chat with your library, and resurfaces things at the right moment, without you having to remember to look.</div>
+    <div class="faq-a">Bookmarks pile up and get forgotten. Arlo understands what you saved, lets you search by meaning, chat with your library, and resurfaces things at the right moment, without you having to remember to look.</div>
   </div>
 
   <div class="faq-item">
@@ -1443,7 +1412,7 @@
       <span>Does it work with Claude and ChatGPT?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">Yes. Connect arlo once via MCP and your entire library becomes available inside Claude and ChatGPT. Ask a question in your AI chat and it'll quietly check your saves first and surface anything relevant.</div>
+    <div class="faq-a">Yes. Connect Arlo once via MCP and your entire library becomes available inside Claude and ChatGPT. Ask a question in your AI chat and it'll quietly check your saves first and surface anything relevant.</div>
   </div>
 
   <div class="faq-item">
@@ -1459,7 +1428,7 @@
       <span>What does early access get me?</span>
       <button class="faq-toggle">+</button>
     </div>
-    <div class="faq-a">First access before public launch, direct input into what arlo builds next, and a way to shape the product while it's still early enough to matter.</div>
+    <div class="faq-a">First access before public launch, direct input into what Arlo builds next, and a way to shape the product while it's still early enough to matter.</div>
   </div>
 </section>
 
@@ -1467,7 +1436,7 @@
 <section class="cta-band">
   <div class="cta-band-inner">
     <h2>Your saves deserve&nbsp;better.</h2>
-    <p>Join the list. Be first to use arlo when it launches.</p>
+    <p>Join the list. Be first to use Arlo when it launches.</p>
     <form class="cta-band-form" onsubmit="handleSubmit(event, 'cta-form', 'cta-success')">
       <input type="email" placeholder="Enter your email" required />
       <button type="submit">Join waitlist</button>
@@ -1481,8 +1450,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="wordmark">arlo</span>
-  <p>© 2026 arlo. All rights reserved.</p>
+  <span class="wordmark">Arlo</span>
+  <p>© 2026 Arlo. All rights reserved.</p>
   <nav>
     <a href="#">Privacy</a>
     <a href="#">Terms</a>
@@ -1510,7 +1479,7 @@
     if (success) success.style.display = 'flex';
   }
 
-  /* ── Survey: Help us build arlo ── */
+  /* ── Survey: Help us build Arlo ── */
   const surveySteps = [
     {
       title: 'What best describes you?', sub: 'Select all that apply.', emoji: '🌍',
@@ -1532,7 +1501,7 @@
       ],
     },
     {
-      title: 'What would you love arlo to help you do?', sub: 'Select all that apply.', emoji: '✨',
+      title: 'What would you love Arlo to help you do?', sub: 'Select all that apply.', emoji: '✨',
       options: [
         { icon: '🔗', label: 'Connect my ideas' },
         { icon: '✅', label: 'Turn saves into action' },
@@ -1541,7 +1510,7 @@
       ],
     },
     {
-      title: 'Almost there!', sub: 'How did you hear about arlo?', emoji: '🎉',
+      title: 'Almost there!', sub: 'How did you hear about Arlo?', emoji: '🎉',
       options: [
         { icon: '🐦', label: 'Social media' },
         { icon: '👋', label: 'A friend' },
@@ -1595,7 +1564,7 @@
         '<div class="survey-done">' +
         '<div class="survey-done-emoji">🎉</div>' +
         '<h3>Thank you!</h3>' +
-        '<p>Your answers help us build a better arlo. You\'re shaping what we build next.</p>' +
+        '<p>Your answers help us build a better Arlo. You\'re shaping what we build next.</p>' +
         '</div>';
       document.querySelectorAll('.survey-step').forEach(function (el) {
         el.classList.remove('active');
