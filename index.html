@@ -437,7 +437,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
-      align-items: center;
+      align-items: start;
       margin-bottom: 20px;
       box-shadow: 0 2px 24px #00000008;
     }
@@ -511,8 +511,23 @@
       margin: 0;
       padding-bottom: 0;
     }
-    .feature-wide-phone .float-card.notif  { left: -28px; top: 14%; }
-    .feature-wide-phone .float-card.ai-chip { right: -28px; top: 60%; }
+    /* cut the phone: show only the populated top, slice off the empty bottom */
+    .feature-wide-phone .phone-frame {
+      padding-bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .feature-wide-phone .phone-screen {
+      aspect-ratio: auto;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .feature-wide-phone .phone-ui {
+      height: auto;
+      padding-bottom: 22px;
+    }
+    .feature-wide-phone .float-card.notif  { left: -28px; top: 12%; }
+    .feature-wide-phone .float-card.ai-chip { right: -28px; bottom: 14%; top: auto; }
 
     /* two small cards */
     .feature-grid {
