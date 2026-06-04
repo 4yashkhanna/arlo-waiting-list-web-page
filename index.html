@@ -63,7 +63,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px 40px;
+      padding: 34px 40px 10px;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -71,23 +71,13 @@
     .nav-wordmark {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
       text-decoration: none;
     }
 
-    .nav-mark {
-      width: 28px;
-      height: 28px;
+    .nav-logo {
+      width: 64px;
+      height: 64px;
       display: block;
-      flex-shrink: 0;
-    }
-
-    .nav-brand-name {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--ink);
     }
 
     .nav-cta {
@@ -108,7 +98,7 @@
     /* ── HERO ────────────────────────────────────────── */
     .hero {
       text-align: center;
-      padding: 60px 24px 0;
+      padding: 28px 24px 0;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -1129,9 +1119,9 @@
       gap: 12px;
     }
 
-    footer .wordmark-mark {
-      width: 24px;
-      height: 24px;
+    footer .wordmark img {
+      width: 40px;
+      height: 40px;
       display: block;
     }
 
@@ -1275,15 +1265,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-wordmark" href="#" aria-label="Arlo">
-    <svg class="nav-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <!-- Left dark downward triangle -->
-      <polygon points="8,18 44,18 8,64" fill="#2C2926"/>
-      <!-- Right dark downward triangle -->
-      <polygon points="92,18 56,18 92,64" fill="#2C2926"/>
-      <!-- Central terracotta cursor/star — pointed top, notched base -->
-      <polygon points="50,4 73,82 50,63 27,82" fill="#B8512A"/>
-    </svg>
-    <span class="nav-brand-name">arlo</span>
+    <img src="logo.png" alt="Arlo" class="nav-logo" />
   </a>
 </nav>
 
@@ -1590,13 +1572,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="wordmark">
-    <svg class="wordmark-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <polygon points="8,18 44,18 8,64" fill="#2C2926"/>
-      <polygon points="92,18 56,18 92,64" fill="#2C2926"/>
-      <polygon points="50,4 73,82 50,63 27,82" fill="#B8512A"/>
-    </svg>
-  </span>
+  <span class="wordmark"><img src="logo.png" alt="Arlo" /></span>
   <p>© 2026 Arlo. All rights reserved.</p>
   <nav>
     <a href="#">Privacy</a>
