@@ -71,14 +71,23 @@
     .nav-wordmark {
       display: inline-flex;
       align-items: center;
+      gap: 10px;
       text-decoration: none;
     }
 
     .nav-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 52px;
+      height: 52px;
       display: block;
+      /* no border-radius — rounded corners are baked into the PNG */
+    }
+
+    .nav-brand-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
     }
 
     .nav-cta {
@@ -1267,7 +1276,8 @@
 <!-- NAV -->
 <nav>
   <a class="nav-wordmark" href="#" aria-label="Arlo">
-    <img src="logo.png" alt="Arlo" class="nav-logo" />
+    <img src="logo.png" alt="" class="nav-logo" />
+    <span class="nav-brand-name">arlo</span>
   </a>
 </nav>
 
