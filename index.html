@@ -8,9 +8,11 @@
   <meta property="og:title" content="Arlo · Your personal knowledge library" />
   <meta property="og:description" content="Save anything. Arlo reads it, organizes it, and resurfaces it when you need it." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+  <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,7 +36,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       background: var(--bg);
       color: var(--ink);
       min-height: 100vh;
@@ -67,18 +69,22 @@
     }
 
     .nav-wordmark {
-      font-family: 'Lora', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
       text-decoration: none;
-      letter-spacing: -0.3px;
+    }
+
+    .nav-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: block;
     }
 
     .nav-cta {
       background: var(--accent);
       color: #FFF8F5;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 14px;
       font-weight: 600;
       padding: 10px 22px;
@@ -115,11 +121,11 @@
     .hero-badge svg { width: 13px; height: 13px; flex-shrink: 0; }
 
     .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(38px, 6.2vw, 56px);
-      font-weight: 700;
-      line-height: 1.12;
-      letter-spacing: -1.5px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(36px, 6vw, 54px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
       color: var(--ink);
       margin-bottom: 22px;
       text-wrap: balance;
@@ -157,7 +163,7 @@
       border: none;
       outline: none;
       background: transparent;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 15px;
       color: var(--ink);
       min-width: 0;
@@ -167,7 +173,7 @@
     .email-form button {
       background: var(--accent);
       color: #FFF8F5;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 14px;
       font-weight: 600;
       padding: 12px 24px;
@@ -272,7 +278,7 @@
     }
 
     .phone-header {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 22px;
       font-weight: 700;
       color: var(--accent);
@@ -326,7 +332,7 @@
     }
 
     .phone-card-title {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--ink);
@@ -416,10 +422,10 @@
     }
 
     .features-header h2 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: clamp(28px, 4vw, 42px);
       font-weight: 700;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.02em;
       color: var(--ink);
       margin-bottom: 12px;
     }
@@ -458,7 +464,7 @@
     }
 
     .feature-wide h3 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 28px;
       font-weight: 700;
       line-height: 1.2;
@@ -587,7 +593,7 @@
     }
 
     .feature-card h3 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 22px;
       font-weight: 700;
       color: var(--ink);
@@ -743,13 +749,13 @@
     }
 
     .faq h2 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: clamp(26px, 4vw, 38px);
       font-weight: 700;
       text-align: center;
       color: var(--ink);
       margin-bottom: 12px;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.02em;
     }
 
     .faq > p {
@@ -809,14 +815,11 @@
     }
 
     .faq-a {
-      display: none;
-      padding: 0 24px 20px;
       font-size: 15px;
       color: var(--ink-2);
       line-height: 1.75;
+      /* display/visibility controlled by motion layer max-height */
     }
-
-    .faq-item.open .faq-a { display: block; }
 
     /* ── CTA BAND ─────────────────────────────────────── */
     .cta-band {
@@ -842,7 +845,7 @@
     }
 
     .cta-band-inner h2 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: clamp(26px, 4vw, 40px);
       font-weight: 700;
       color: #FFF8F5;
@@ -873,7 +876,7 @@
       border: none;
       outline: none;
       background: transparent;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 15px;
       color: #FFF8F5;
       min-width: 0;
@@ -883,7 +886,7 @@
     .cta-band-form button {
       background: #FFF8F5;
       color: var(--accent);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 14px;
       font-weight: 600;
       padding: 12px 24px;
@@ -919,10 +922,10 @@
     .survey-intro .feature-label { margin-bottom: 14px; }
 
     .survey-intro h2 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: clamp(26px, 3.5vw, 36px);
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.02em;
       color: var(--ink);
       margin-bottom: 12px;
     }
@@ -1006,7 +1009,7 @@
       margin-bottom: 20px;
     }
     .survey-card-head h3 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 20px;
       font-weight: 700;
       color: var(--ink);
@@ -1077,7 +1080,7 @@
       width: 100%;
       background: var(--accent);
       color: #FFF8F5;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 15px;
       font-weight: 600;
       padding: 14px;
@@ -1096,7 +1099,7 @@
     .survey-done { text-align: center; padding: 28px 0; }
     .survey-done-emoji { font-size: 44px; margin-bottom: 12px; }
     .survey-done h3 {
-      font-family: 'Lora', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 22px;
       font-weight: 700;
       color: var(--ink);
@@ -1117,11 +1120,11 @@
       gap: 12px;
     }
 
-    footer .wordmark {
-      font-family: 'Lora', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent);
+    footer .wordmark img {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: block;
     }
 
     footer p {
@@ -1144,6 +1147,86 @@
       transition: color 0.15s;
     }
     footer a:hover { color: var(--accent); }
+
+    /* ── MOTION LAYER ───────────────────────────────────── */
+    :root {
+      --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    /* Button press feedback */
+    .email-form button,
+    .nav-cta,
+    .survey-next,
+    .cta-band-form button {
+      transition: background 150ms var(--ease-out),
+                  transform 120ms var(--ease-out) !important;
+    }
+    .email-form button:active,
+    .nav-cta:active,
+    .survey-next:active,
+    .cta-band-form button:active { transform: scale(0.97) !important; }
+    .faq-toggle { transition: background 150ms var(--ease-out), transform 220ms var(--ease-out) !important; }
+    .faq-toggle:active { transform: scale(0.92) rotate(0deg) !important; }
+    .faq-item.open .faq-toggle:active { transform: scale(0.92) rotate(45deg) !important; }
+
+    /* Card hover lift */
+    @media (hover: hover) and (pointer: fine) {
+      .feature-wide,
+      .feature-card { transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+      .feature-wide:hover,
+      .feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 60px #2a190f22, inset 0 1px 0 rgba(255,255,255,0.9);
+      }
+      .faq-item:hover { box-shadow: 0 8px 28px #2a190f14; }
+    }
+
+    /* FAQ accordion — smooth transition */
+    .faq-a {
+      overflow: hidden;
+      max-height: 0;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 0;
+      opacity: 0;
+      transition: max-height 280ms var(--ease-out),
+                  padding-bottom 280ms var(--ease-out),
+                  opacity 220ms ease;
+    }
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding-bottom: 20px;
+      opacity: 1;
+    }
+
+    /* Form success — fade up */
+    .form-success { opacity: 0; transform: translateY(4px); transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+    .form-success.visible { opacity: 1; transform: translateY(0); }
+
+    /* Scroll-reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 70ms; }
+    .reveal-d2 { transition-delay: 140ms; }
+    .reveal-d3 { transition-delay: 210ms; }
+
+    /* Survey step progress */
+    .survey-step-num { transition: background 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
+
+    /* Survey card swap */
+    @keyframes cardExit  { to   { opacity: 0; transform: translateX(-8px); } }
+    @keyframes cardEnter { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: translateX(0); } }
+    .card-exit  { animation: cardExit  140ms var(--ease-out) forwards; }
+    .card-enter { animation: cardEnter 200ms var(--ease-out) forwards; }
+
+    /* Reduced motion — strip all animation */
+    @media (prefers-reduced-motion: reduce) {
+      .float-card { animation: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .faq-a { transition: none !important; }
+      .card-exit, .card-enter { animation: none !important; }
+    }
 
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 760px) {
@@ -1183,7 +1266,9 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-wordmark" href="#">Arlo</a>
+  <a class="nav-wordmark" href="#" aria-label="Arlo">
+    <img src="logo.png" alt="Arlo" class="nav-logo" />
+  </a>
 </nav>
 
 <!-- HERO -->
@@ -1489,7 +1574,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="wordmark">Arlo</span>
+  <span class="wordmark"><img src="logo.png" alt="Arlo" /></span>
   <p>© 2026 Arlo. All rights reserved.</p>
   <nav>
     <a href="#">Privacy</a>
