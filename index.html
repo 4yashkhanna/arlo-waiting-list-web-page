@@ -71,15 +71,15 @@
     .nav-wordmark {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       text-decoration: none;
     }
 
-    .nav-logo {
-      width: 52px;
-      height: 52px;
+    .nav-mark {
+      width: 28px;
+      height: 28px;
       display: block;
-      /* no border-radius — rounded corners are baked into the PNG */
+      flex-shrink: 0;
     }
 
     .nav-brand-name {
@@ -1129,10 +1129,9 @@
       gap: 12px;
     }
 
-    footer .wordmark img {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
+    footer .wordmark-mark {
+      width: 24px;
+      height: 24px;
       display: block;
     }
 
@@ -1276,7 +1275,14 @@
 <!-- NAV -->
 <nav>
   <a class="nav-wordmark" href="#" aria-label="Arlo">
-    <img src="logo.png" alt="" class="nav-logo" />
+    <svg class="nav-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <!-- Left dark downward triangle -->
+      <polygon points="8,18 44,18 8,64" fill="#2C2926"/>
+      <!-- Right dark downward triangle -->
+      <polygon points="92,18 56,18 92,64" fill="#2C2926"/>
+      <!-- Central terracotta cursor/star — pointed top, notched base -->
+      <polygon points="50,4 73,82 50,63 27,82" fill="#B8512A"/>
+    </svg>
     <span class="nav-brand-name">arlo</span>
   </a>
 </nav>
@@ -1584,7 +1590,13 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="wordmark"><img src="logo.png" alt="Arlo" /></span>
+  <span class="wordmark">
+    <svg class="wordmark-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <polygon points="8,18 44,18 8,64" fill="#2C2926"/>
+      <polygon points="92,18 56,18 92,64" fill="#2C2926"/>
+      <polygon points="50,4 73,82 50,63 27,82" fill="#B8512A"/>
+    </svg>
+  </span>
   <p>© 2026 Arlo. All rights reserved.</p>
   <nav>
     <a href="#">Privacy</a>
